@@ -12,7 +12,7 @@ desc "Usage example: fastlane unit_test device:'iPhone 8'"
 lane :unit_test do |options| 
   raise "Missing 'device' parameter. Usage: fastlane unit_test device:DEVICE" unless options[:device]
   scan(
-      scheme: "tvmazetechtest",
+      scheme: "tvmazetechtestTests",
       device: options[:device],
       clean: true,
       disable_concurrent_testing: true
