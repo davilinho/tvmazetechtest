@@ -1,18 +1,3 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
-
 default_platform(:ios)
 
 ####################################################################################################
@@ -23,63 +8,39 @@ default_platform(:ios)
 ##############
 
 desc "Runs app's unit tests in the specified device."
-desc "Usage example: fastlane unit_test device:'iPhone 12’ ios_version:'14.2'"
+desc "Usage example: fastlane unit_test device:'iPhone 8'"
 lane :unit_test do |options| 
-  raise "Missing 'device' parameter. Usage: fastlane unit_test device:DEVICE ios_version:IOS_VERSION" unless options[:device]
-  raise "Missing 'ios_version' parameter. Usage: fastlane unit_test device:DEVICE ios_version:IOS_VERSION" unless options[:ios_version]
-  ios_version = options[:ios_version]
-  scan(
-      scheme: "tvmazetechtestTests",
-      device: options[:device],
-      sdk: "iphonesimulator" + "#{ios_version}",
-      clean: true,
-      disable_concurrent_testing: true
-    )
-end
-
-desc "Runs app's UI tests in the specified device."
-desc "Usage example: fastlane ui_test device:'iPhone 12’ ios_version:'14.2'"
-lane :ui_test do |options| 
-  raise "Missing 'device' parameter. Usage: fastlane ui_test device:DEVICE ios_version:IOS_VERSION" unless options[:device]
-  raise "Missing 'ios_version' parameter. Usage: fastlane ui_test device:DEVICE ios_version:IOS_VERSION" unless options[:ios_version]
-  ios_version = options[:ios_version]
-  scan(
-      scheme: "tvmazetechtestUITests",
-      device: options[:device],
-      sdk: "iphonesimulator" + "#{ios_version}",
-      clean: true,
-      disable_concurrent_testing: true
-    )
-end
-
-desc "Runs app's full test suite in the specified device."
-desc "Usage example: fastlane full_test device:'iPhone 12’ ios_version:'14.2'"
-lane :full_test do |options| 
-  raise "Missing 'device' parameter. Usage: fastlane full_test device:DEVICE ios_version:IOS_VERSION" unless options[:device]
-  raise "Missing 'ios_version' parameter. Usage: fastlane full_test device:DEVICE ios_version:IOS_VERSION" unless options[:ios_version]
-  ios_version = options[:ios_version]
+  raise "Missing 'device' parameter. Usage: fastlane unit_test device:DEVICE" unless options[:device]
   scan(
       scheme: "tvmazetechtest",
       device: options[:device],
-      sdk: "iphonesimulator" + "#{ios_version}",
       clean: true,
       disable_concurrent_testing: true
-    )
+  )
+end
+
+desc "Runs app's ui unit tests in the specified device."
+desc "Usage example: fastlane ui_test device:'iPhone 8'"
+lane :ui_test do |options| 
+  raise "Missing 'device' parameter. Usage: fastlane ui_test device:DEVICE" unless options[:device]
+  scan(
+      scheme: "tvmazetechtestUITests",
+      device: options[:device],
+      clean: true,
+      disable_concurrent_testing: true
+  )
 end
 
 ###############
 # Build lanes #
 ###############
 
-desc "Builds the app for the specified iOS version."
-desc "This lane is to make sure that the app builds correctly before running any test, thus catching compilation errors early."
-desc "Usage example: fastlane compile_app ios_version:'12.4'"
+desc "Builds the app to make sure there are no breaking changes. No tests are executed."
+desc "Usage example: fastlane build_framework"
 lane :compile_app do |options|
-  raise "Missing 'ios_version' parameter. Usage: fastlane compile_app ios_version:IOS_VERSION" unless options[:ios_version]
-  ios_version = options[:ios_version]
   xcbuild(
     scheme: "tvmazetechtest",
-    sdk: "iphonesimulator" + "#{ios_version}",
+    sdk: "iphonesimulator",
     clean: true
   )
 end
