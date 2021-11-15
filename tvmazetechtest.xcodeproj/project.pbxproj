@@ -40,6 +40,14 @@
 		D58EB4A22742CAEB00F60ED9 /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4A12742CAEB00F60ED9 /* ObservableTests.swift */; };
 		D58EB4A52742CF3100F60ED9 /* ArraySafeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4A42742CF3100F60ED9 /* ArraySafeTests.swift */; };
 		D58EB4A72742D17D00F60ED9 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4A62742D17D00F60ED9 /* Show.swift */; };
+		D58EB4AE2742D8DE00F60ED9 /* ListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4AD2742D8DE00F60ED9 /* ListRepository.swift */; };
+		D58EB4B02742D94000F60ED9 /* ListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4AF2742D94000F60ED9 /* ListUseCase.swift */; };
+		D58EB4B22742D9B300F60ED9 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4B12742D9B300F60ED9 /* ListViewModel.swift */; };
+		D58EB4B72743123000F60ED9 /* ComponentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4B62743123000F60ED9 /* ComponentsTests.swift */; };
+		D58EB4BE2743137600F60ED9 /* ListRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4BD2743137600F60ED9 /* ListRepositoryTests.swift */; };
+		D58EB4C0274314CE00F60ED9 /* ListUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4BF274314CE00F60ED9 /* ListUseCaseTests.swift */; };
+		D58EB4C3274316FF00F60ED9 /* ListViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4C2274316FF00F60ED9 /* ListViewModelMock.swift */; };
+		D58EB4C52743173E00F60ED9 /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4C42743173E00F60ED9 /* ListViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +110,14 @@
 		D58EB4A12742CAEB00F60ED9 /* ObservableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
 		D58EB4A42742CF3100F60ED9 /* ArraySafeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraySafeTests.swift; sourceTree = "<group>"; };
 		D58EB4A62742D17D00F60ED9 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
+		D58EB4AD2742D8DE00F60ED9 /* ListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRepository.swift; sourceTree = "<group>"; };
+		D58EB4AF2742D94000F60ED9 /* ListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUseCase.swift; sourceTree = "<group>"; };
+		D58EB4B12742D9B300F60ED9 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		D58EB4B62743123000F60ED9 /* ComponentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsTests.swift; sourceTree = "<group>"; };
+		D58EB4BD2743137600F60ED9 /* ListRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRepositoryTests.swift; sourceTree = "<group>"; };
+		D58EB4BF274314CE00F60ED9 /* ListUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUseCaseTests.swift; sourceTree = "<group>"; };
+		D58EB4C2274316FF00F60ED9 /* ListViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelMock.swift; sourceTree = "<group>"; };
+		D58EB4C42743173E00F60ED9 /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
 		DD37BCC9B14B8B91FAC1FE10 /* Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig"; path = "Target Support Files/Pods-tvmazetechtest-tvmazetechtestUITests/Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -242,6 +258,7 @@
 		D58EB46727426EF100F60ED9 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D58EB4A82742D89D00F60ED9 /* List */,
 				D58EB4742742713500F60ED9 /* Common */,
 			);
 			path = Features;
@@ -321,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				D58EB48B2742745500F60ED9 /* Base */,
+				D58EB4B32743120B00F60ED9 /* Features */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -402,6 +420,124 @@
 				D58EB4A42742CF3100F60ED9 /* ArraySafeTests.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D58EB4A82742D89D00F60ED9 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4A92742D8A300F60ED9 /* Domain */,
+				D58EB4AC2742D8B800F60ED9 /* Presentation */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		D58EB4A92742D8A300F60ED9 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4AB2742D8B100F60ED9 /* Repository */,
+				D58EB4AA2742D8AC00F60ED9 /* Usecase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		D58EB4AA2742D8AC00F60ED9 /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4AF2742D94000F60ED9 /* ListUseCase.swift */,
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		D58EB4AB2742D8B100F60ED9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4AD2742D8DE00F60ED9 /* ListRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		D58EB4AC2742D8B800F60ED9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4B12742D9B300F60ED9 /* ListViewModel.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		D58EB4B32743120B00F60ED9 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4B42743121E00F60ED9 /* Common */,
+				D58EB4B82743134600F60ED9 /* List */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		D58EB4B42743121E00F60ED9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4B52743122500F60ED9 /* Di */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D58EB4B52743122500F60ED9 /* Di */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4B62743123000F60ED9 /* ComponentsTests.swift */,
+			);
+			path = Di;
+			sourceTree = "<group>";
+		};
+		D58EB4B82743134600F60ED9 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4B92743134F00F60ED9 /* Domain */,
+				D58EB4BC2743136600F60ED9 /* Presentation */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		D58EB4B92743134F00F60ED9 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4BA2743135600F60ED9 /* Repository */,
+				D58EB4BB2743135B00F60ED9 /* Usecase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		D58EB4BA2743135600F60ED9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4BD2743137600F60ED9 /* ListRepositoryTests.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		D58EB4BB2743135B00F60ED9 /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4BF274314CE00F60ED9 /* ListUseCaseTests.swift */,
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		D58EB4BC2743136600F60ED9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4C1274316F200F60ED9 /* Mock */,
+				D58EB4C42743173E00F60ED9 /* ListViewModelTests.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		D58EB4C1274316F200F60ED9 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				D58EB4C2274316FF00F60ED9 /* ListViewModelMock.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		D6B3D8CED1BCA63A5663492C /* Frameworks */ = {
@@ -672,6 +808,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D58EB4B02742D94000F60ED9 /* ListUseCase.swift in Sources */,
 				D58EB47D2742722700F60ED9 /* Codable+Extension.swift in Sources */,
 				D58EB4A72742D17D00F60ED9 /* Show.swift in Sources */,
 				D58EB433273BFCD400F60ED9 /* AppDelegate.swift in Sources */,
@@ -681,10 +818,12 @@
 				D58EB489274273DC00F60ED9 /* BaseError.swift in Sources */,
 				D58EB47F2742723E00F60ED9 /* Collection+Safe.swift in Sources */,
 				D58EB4832742734200F60ED9 /* BaseViewController.swift in Sources */,
+				D58EB4B22742D9B300F60ED9 /* ListViewModel.swift in Sources */,
 				D58EB473274270F800F60ED9 /* Observable.swift in Sources */,
 				D58EB4852742735700F60ED9 /* BaseViewModel.swift in Sources */,
 				D58EB435273BFCD400F60ED9 /* SceneDelegate.swift in Sources */,
 				D58EB46F274270C500F60ED9 /* Inject.swift in Sources */,
+				D58EB4AE2742D8DE00F60ED9 /* ListRepository.swift in Sources */,
 				D58EB4872742736F00F60ED9 /* NavigationBarSettings.swift in Sources */,
 				D58EB471274270E000F60ED9 /* Resolver.swift in Sources */,
 				D58EB4812742732600F60ED9 /* CoreLog.swift in Sources */,
@@ -697,10 +836,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D58EB48E2742AAFC00F60ED9 /* StorageDatasourceTests.swift in Sources */,
+				D58EB4C0274314CE00F60ED9 /* ListUseCaseTests.swift in Sources */,
+				D58EB4C52743173E00F60ED9 /* ListViewModelTests.swift in Sources */,
+				D58EB4C3274316FF00F60ED9 /* ListViewModelMock.swift in Sources */,
+				D58EB4B72743123000F60ED9 /* ComponentsTests.swift in Sources */,
 				D58EB4982742C40100F60ED9 /* BaseErrorTests.swift in Sources */,
 				D58EB49E2742C68100F60ED9 /* ResolverObjectMockTest.swift in Sources */,
 				D58EB4922742B21700F60ED9 /* RemoteDatasourceTests.swift in Sources */,
 				D58EB4A22742CAEB00F60ED9 /* ObservableTests.swift in Sources */,
+				D58EB4BE2743137600F60ED9 /* ListRepositoryTests.swift in Sources */,
 				D58EB4A52742CF3100F60ED9 /* ArraySafeTests.swift in Sources */,
 				D58EB49B2742C51B00F60ED9 /* ResolverTests.swift in Sources */,
 			);
