@@ -34,17 +34,6 @@ public struct NavigationBarSettings {
     }
 }
 
-extension NavigationBarSettings {
-    public init?(navigationBar: UINavigationBar?) {
-        guard let navigationBar = navigationBar else { return nil }
-        self.prefersLargeTitles = navigationBar.prefersLargeTitles
-        self.backgroundBarColor = navigationBar.backgroundColor
-        self.barTintColor = navigationBar.barTintColor
-        self.titleTextAttributes = navigationBar.titleTextAttributes
-        self.largeTitleTextAttributes = navigationBar.largeTitleTextAttributes
-    }
-}
-
 extension UINavigationBar {
     public func set(settings: NavigationBarSettings) {
         if #available(iOS 13.0, *) {

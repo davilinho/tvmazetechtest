@@ -41,4 +41,18 @@ class RemoteDatasourceTests: XCTestCase {
             }
         }
     }
+
+    func testGetPageOutOfRangeFailure() {
+        waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
+            self.remote.get(to: "shows", with: PageRequest(page: 100000000)) { (result: Result<[Show], BaseError>) in
+                switch result {
+                case .success(let response):
+                    CoreLog.remote.debug("%@", response.testDescription)
+                case .failure(let error):
+                    expect(error).toNot(beNil())
+                    done()
+                }
+            }
+        }
+    }
 }
