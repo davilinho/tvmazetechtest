@@ -20,7 +20,7 @@ class ListViewModelTests: XCTestCase {
                 expect(models).toNot(beNil())
                 done()
             }
-            self.viewModel.onViewDidLoad()
+            self.viewModel.onViewDidAppear()
         }
     }
 
@@ -41,6 +41,26 @@ class ListViewModelTests: XCTestCase {
                 done()
             }
             self.viewModel.fecthNext(page: 100000000)
+        }
+    }
+
+    func testGetSearchSuccessful() {
+        waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
+            self.viewModel.models.subscribe { models in
+                expect(models).toNot(beNil())
+                done()
+            }
+            self.viewModel.search(by: "Cars")
+        }
+    }
+
+    func testGetSearchFailure() {
+        waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
+            self.viewModel.models.subscribe { models in
+                expect(models).to(beEmpty())
+                done()
+            }
+            self.viewModel.search(by: "SHOW NOT FOUND")
         }
     }
 }

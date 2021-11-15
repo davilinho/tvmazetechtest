@@ -21,4 +21,15 @@ class ListUseCase: InjectableComponent {
             }
         }
     }
+
+    func search(by query: String? = nil, completion:  @escaping ([SearchResponse]) -> Void) {
+        DispatchQueue.global(qos: .background).async {
+            self.repository.search(by: query) { response in
+                /* I've added a second delay, to let see the loading animation as well */
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    completion(response)
+                }
+            }
+        }
+    }
 }

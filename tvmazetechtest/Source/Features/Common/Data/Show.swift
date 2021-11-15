@@ -8,16 +8,26 @@
 import Foundation
 
 struct Show: Codable {
-    let url: String?
     let name: String?
+    let image: Image?
     let rating: Rating?
     let summary: String?
 
     enum CodingKeys: String, CodingKey {
-        case url
         case name
+        case image
         case rating
         case summary
+    }
+}
+
+struct Image: Codable {
+    let medium: String?
+    let original: String?
+
+    enum CodingKeys: String, CodingKey {
+        case medium
+        case original
     }
 }
 

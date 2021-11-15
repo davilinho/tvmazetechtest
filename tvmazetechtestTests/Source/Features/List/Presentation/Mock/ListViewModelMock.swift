@@ -9,9 +9,9 @@
 import Foundation
 
 class ListViewModelMock: ListViewModel {
-    private(set) var onViewLoadedCalled = false
+    private(set) var onViewAppearCalled = false
 
-    override func onViewDidLoad() {
-        onViewLoadedCalled = true
+    override func onViewDidAppear() {
+        self.onViewAppearCalled = true
     }
 }

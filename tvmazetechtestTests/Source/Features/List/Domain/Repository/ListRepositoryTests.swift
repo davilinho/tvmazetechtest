@@ -40,4 +40,22 @@ class ListRepositoryTests: XCTestCase {
             }
         }
     }
+
+    func testGetSearchSuccessful() {
+        waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
+            self.repository.search(by: "Cars") { (models: [SearchResponse]) in
+                expect(models).toNot(beNil())
+                done()
+            }
+        }
+    }
+
+    func testGetSearchFailure() {
+        waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
+            self.repository.search(by: "SHOW NOT FOUND") { (models: [SearchResponse]) in
+                expect(models).to(beEmpty())
+                done()
+            }
+        }
+    }
 }

@@ -23,4 +23,17 @@ class ListRepository: InjectableComponent {
             }
         }
     }
+
+    func search(by query: String? = nil, completion:  @escaping ([SearchResponse]) -> Void) {
+        self.remote.get(to: "search/shows", with: SearchRequest(query: query)) { (result: Result<[SearchResponse], BaseError>) in
+            switch result {
+            case .success(let response):
+                CoreLog.business.info("%@", response)
+                completion(response)
+            case .failure(let error):
+                CoreLog.business.error("%@", error.description)
+                completion([])
+            }
+        }
+    }
 }

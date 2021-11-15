@@ -8,5 +8,5 @@
 import Foundation
 
 protocol BaseViewModel: AnyObject {
-    func onViewDidLoad()
+    func onViewDidAppear()
 }
