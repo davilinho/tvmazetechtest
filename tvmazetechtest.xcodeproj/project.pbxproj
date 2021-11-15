@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21A7971840DB05F95371573D /* Pods_tvmazetechtestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05EB38FE73BDA1F5DBF90214 /* Pods_tvmazetechtestTests.framework */; };
+		47826BB358D38C59BBC9ECAA /* Pods_tvmazetechtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CACE835C7DE465DA6AC2B6D /* Pods_tvmazetechtest.framework */; };
+		C3B4C7085723C1D38E37CE7C /* Pods_tvmazetechtest_tvmazetechtestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A81628584F2C63766BF569 /* Pods_tvmazetechtest_tvmazetechtestUITests.framework */; };
 		D58EB433273BFCD400F60ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB432273BFCD400F60ED9 /* AppDelegate.swift */; };
 		D58EB435273BFCD400F60ED9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB434273BFCD400F60ED9 /* SceneDelegate.swift */; };
 		D58EB437273BFCD400F60ED9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB436273BFCD400F60ED9 /* ViewController.swift */; };
@@ -36,6 +39,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02E6815EB0DDF6BCCCC83AF6 /* Pods-tvmazetechtestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvmazetechtestTests.debug.xcconfig"; path = "Target Support Files/Pods-tvmazetechtestTests/Pods-tvmazetechtestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		05EB38FE73BDA1F5DBF90214 /* Pods_tvmazetechtestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvmazetechtestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29D851231432E2DF9DCB6606 /* Pods-tvmazetechtest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvmazetechtest.release.xcconfig"; path = "Target Support Files/Pods-tvmazetechtest/Pods-tvmazetechtest.release.xcconfig"; sourceTree = "<group>"; };
+		49958A1F0DEFEDB5674DD2FF /* Pods-tvmazetechtest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvmazetechtest.debug.xcconfig"; path = "Target Support Files/Pods-tvmazetechtest/Pods-tvmazetechtest.debug.xcconfig"; sourceTree = "<group>"; };
+		4EF49F7AF930E0D4F5289A26 /* Pods-tvmazetechtestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvmazetechtestTests.release.xcconfig"; path = "Target Support Files/Pods-tvmazetechtestTests/Pods-tvmazetechtestTests.release.xcconfig"; sourceTree = "<group>"; };
+		53A81628584F2C63766BF569 /* Pods_tvmazetechtest_tvmazetechtestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvmazetechtest_tvmazetechtestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CACE835C7DE465DA6AC2B6D /* Pods_tvmazetechtest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvmazetechtest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B322FB54ED2EA6E80C1C4573 /* Pods-tvmazetechtest-tvmazetechtestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvmazetechtest-tvmazetechtestUITests.release.xcconfig"; path = "Target Support Files/Pods-tvmazetechtest-tvmazetechtestUITests/Pods-tvmazetechtest-tvmazetechtestUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D58EB42F273BFCD400F60ED9 /* tvmazetechtest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvmazetechtest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58EB432273BFCD400F60ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D58EB434273BFCD400F60ED9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +60,7 @@
 		D58EB44F273BFCD800F60ED9 /* tvmazetechtestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tvmazetechtestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58EB453273BFCD800F60ED9 /* tvmazetechtestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tvmazetechtestUITests.swift; sourceTree = "<group>"; };
 		D58EB455273BFCD800F60ED9 /* tvmazetechtestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tvmazetechtestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DD37BCC9B14B8B91FAC1FE10 /* Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig"; path = "Target Support Files/Pods-tvmazetechtest-tvmazetechtestUITests/Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47826BB358D38C59BBC9ECAA /* Pods_tvmazetechtest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21A7971840DB05F95371573D /* Pods_tvmazetechtestTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3B4C7085723C1D38E37CE7C /* Pods_tvmazetechtest_tvmazetechtestUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8236F6FB5F28D9210E8C7366 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				49958A1F0DEFEDB5674DD2FF /* Pods-tvmazetechtest.debug.xcconfig */,
+				29D851231432E2DF9DCB6606 /* Pods-tvmazetechtest.release.xcconfig */,
+				DD37BCC9B14B8B91FAC1FE10 /* Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig */,
+				B322FB54ED2EA6E80C1C4573 /* Pods-tvmazetechtest-tvmazetechtestUITests.release.xcconfig */,
+				02E6815EB0DDF6BCCCC83AF6 /* Pods-tvmazetechtestTests.debug.xcconfig */,
+				4EF49F7AF930E0D4F5289A26 /* Pods-tvmazetechtestTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D58EB426273BFCD400F60ED9 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +111,8 @@
 				D58EB448273BFCD800F60ED9 /* tvmazetechtestTests */,
 				D58EB452273BFCD800F60ED9 /* tvmazetechtestUITests */,
 				D58EB430273BFCD400F60ED9 /* Products */,
+				8236F6FB5F28D9210E8C7366 /* Pods */,
+				D6B3D8CED1BCA63A5663492C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +157,16 @@
 			path = tvmazetechtestUITests;
 			sourceTree = "<group>";
 		};
+		D6B3D8CED1BCA63A5663492C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5CACE835C7DE465DA6AC2B6D /* Pods_tvmazetechtest.framework */,
+				53A81628584F2C63766BF569 /* Pods_tvmazetechtest_tvmazetechtestUITests.framework */,
+				05EB38FE73BDA1F5DBF90214 /* Pods_tvmazetechtestTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +174,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D58EB459273BFCD800F60ED9 /* Build configuration list for PBXNativeTarget "tvmazetechtest" */;
 			buildPhases = (
+				2EB6783373B2956791A9E12D /* [CP] Check Pods Manifest.lock */,
 				D58EB42B273BFCD400F60ED9 /* Sources */,
 				D58EB42C273BFCD400F60ED9 /* Frameworks */,
 				D58EB42D273BFCD400F60ED9 /* Resources */,
+				07A971DCE778880927A51B08 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,9 +193,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D58EB45C273BFCD800F60ED9 /* Build configuration list for PBXNativeTarget "tvmazetechtestTests" */;
 			buildPhases = (
+				224BB8684E0D667BB520F323 /* [CP] Check Pods Manifest.lock */,
 				D58EB441273BFCD700F60ED9 /* Sources */,
 				D58EB442273BFCD700F60ED9 /* Frameworks */,
 				D58EB443273BFCD700F60ED9 /* Resources */,
+				880125806B0DE19092FECA81 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,9 +213,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D58EB45F273BFCD800F60ED9 /* Build configuration list for PBXNativeTarget "tvmazetechtestUITests" */;
 			buildPhases = (
+				BA23669752DDE43BACFA674D /* [CP] Check Pods Manifest.lock */,
 				D58EB44B273BFCD800F60ED9 /* Sources */,
 				D58EB44C273BFCD800F60ED9 /* Frameworks */,
 				D58EB44D273BFCD800F60ED9 /* Resources */,
+				69110192FB19385BEC8DED8D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,6 +298,126 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07A971DCE778880927A51B08 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tvmazetechtest/Pods-tvmazetechtest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tvmazetechtest/Pods-tvmazetechtest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tvmazetechtest/Pods-tvmazetechtest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		224BB8684E0D667BB520F323 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tvmazetechtestTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2EB6783373B2956791A9E12D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tvmazetechtest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69110192FB19385BEC8DED8D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tvmazetechtest-tvmazetechtestUITests/Pods-tvmazetechtest-tvmazetechtestUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tvmazetechtest-tvmazetechtestUITests/Pods-tvmazetechtest-tvmazetechtestUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tvmazetechtest-tvmazetechtestUITests/Pods-tvmazetechtest-tvmazetechtestUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		880125806B0DE19092FECA81 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tvmazetechtestTests/Pods-tvmazetechtestTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tvmazetechtestTests/Pods-tvmazetechtestTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tvmazetechtestTests/Pods-tvmazetechtestTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA23669752DDE43BACFA674D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tvmazetechtest-tvmazetechtestUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D58EB42B273BFCD400F60ED9 /* Sources */ = {
@@ -367,7 +533,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -422,7 +588,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -434,6 +600,7 @@
 		};
 		D58EB45A273BFCD800F60ED9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49958A1F0DEFEDB5674DD2FF /* Pods-tvmazetechtest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -462,6 +629,7 @@
 		};
 		D58EB45B273BFCD800F60ED9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29D851231432E2DF9DCB6606 /* Pods-tvmazetechtest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -490,6 +658,7 @@
 		};
 		D58EB45D273BFCD800F60ED9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02E6815EB0DDF6BCCCC83AF6 /* Pods-tvmazetechtestTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -515,6 +684,7 @@
 		};
 		D58EB45E273BFCD800F60ED9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EF49F7AF930E0D4F5289A26 /* Pods-tvmazetechtestTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -540,6 +710,7 @@
 		};
 		D58EB460273BFCD800F60ED9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD37BCC9B14B8B91FAC1FE10 /* Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -563,6 +734,7 @@
 		};
 		D58EB461273BFCD800F60ED9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B322FB54ED2EA6E80C1C4573 /* Pods-tvmazetechtest-tvmazetechtestUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
