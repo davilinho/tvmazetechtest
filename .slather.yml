@@ -1,0 +1,9 @@
+coverage_service: coveralls
+xcodeproj: tvmazetechtest.xcodeproj
+workspace: tvmazetechtest.xcworkspace
+scheme: tvmazetechtest
+source_directory: tvmazetechtest/*
+ignore:
+  - tvmazetechtestTests/*
+  - tvmazetechtestUITests/*
+  - Pods/*
