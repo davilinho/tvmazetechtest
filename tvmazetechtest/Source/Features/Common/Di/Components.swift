@@ -21,5 +21,6 @@ class Components {
         // Detail
         Resolver.shared.add(type: DetailRepository.self, { return DetailRepository() })
         Resolver.shared.add(type: DetailUseCase.self, { return DetailUseCase() })
+        Resolver.shared.add(type: DetailViewModel.self, { return DetailViewModel() })
     }
 }

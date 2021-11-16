@@ -16,8 +16,27 @@ class ListViewModel: InjectableComponent & BaseViewModel {
 
     private var currentPage: Int = 0
 
-    func onViewDidAppear() {
+    func fetch() {
         self.resetPage()
+        self.initialFetch()
+    }
+
+    func fetchNext() {
+        self.activeLoading()
+        self.increasePage()
+        self.paginationFetch()
+    }
+
+    func search(by query: String? = nil) {
+        self.resetPage()
+        self.searchFetch(by: query)
+    }
+}
+
+// MARK: - Private logic
+
+extension ListViewModel {
+    private func initialFetch() {
         self.useCase.fetch() { [weak self] in
             guard let self = self else { return }
             self.deactiveLoading()
@@ -25,9 +44,7 @@ class ListViewModel: InjectableComponent & BaseViewModel {
         }
     }
 
-    func fetchNext() {
-        self.activeLoading()
-        self.increasePage()
+    private func paginationFetch() {
         self.useCase.fetch(by: self.currentPage) { [weak self] in
             guard let self = self else { return }
             self.deactiveLoading()
@@ -35,19 +52,14 @@ class ListViewModel: InjectableComponent & BaseViewModel {
         }
     }
 
-    func search(by query: String? = nil) {
-        self.resetPage()
+    private func searchFetch(by query: String?) {
         self.useCase.search(by: query) { [weak self] in
             guard let self = self else { return }
             self.deactiveLoading()
             self.set(models: $0.compactMap { $0.show })
         }
     }
-}
 
-// MARK: - Private logic
-
-extension ListViewModel {
     private func activeLoading() {
         self.isLoading = true
     }

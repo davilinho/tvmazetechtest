@@ -20,7 +20,7 @@ class ListViewModelTests: XCTestCase {
                 expect(models).toNot(beNil())
                 done()
             }
-            self.viewModel.onViewDidAppear()
+            self.viewModel.fetch()
         }
     }
 

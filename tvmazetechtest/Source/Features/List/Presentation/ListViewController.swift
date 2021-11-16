@@ -80,7 +80,7 @@ class ListViewController: BaseViewController {
     @objc private func fetch() {
         guard !self.isSearched() else { return }
         self.playAnimation()
-        self.viewModel.onViewDidAppear()
+        self.viewModel.fetch()
     }
 }
 

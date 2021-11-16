@@ -7,6 +7,4 @@
 
 import Foundation
 
-protocol BaseViewModel: AnyObject {
-    func onViewDidAppear()
-}
+protocol BaseViewModel: AnyObject {}

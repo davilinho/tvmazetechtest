@@ -13,10 +13,10 @@ import SnapshotTesting
 class ListViewControllerTests: XCTestCase {
     let spy: ListViewModelMock = ListViewModelMock()
 
-    func testViewControllerDidAppear() {
+    func testViewControllerFetch() {
         guard let sut = self.loadView() else { return }
         sut.viewDidAppear(true)
-        expect(self.spy.onViewAppearCalled).to(beTrue())
+        expect(self.spy.onFetchCalled).to(beTrue())
     }
 
     func testViewControllerAssertSnapshotSuccessful() {
@@ -48,7 +48,7 @@ class ListViewControllerTests: XCTestCase {
         let searchBar: UISearchBar = UISearchBar()
         searchBar.text = "Cards"
         sut.searchBarCancelButtonClicked(searchBar)
-        expect(self.spy.onViewAppearCalled).to(beTrue())
+        expect(self.spy.onFetchCalled).to(beTrue())
     }
 }
 
