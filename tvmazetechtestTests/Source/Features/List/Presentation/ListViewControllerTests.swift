@@ -24,6 +24,32 @@ class ListViewControllerTests: XCTestCase {
         sut.viewDidLoad()
         assertSnapshot(matching: sut, as: .image)
     }
+
+    func testViewControllerSearch() {
+        guard let sut = self.loadView() else { return }
+        let searchBar: UISearchBar = UISearchBar()
+        searchBar.text = "Cards"
+        sut.searchBar(searchBar, textDidChange: "")
+        sut.enableFilter(searchBar)
+        expect(self.spy.onSearchCalled).to(beTrue())
+    }
+
+    func testViewControllerSearchNotFound() {
+        guard let sut = self.loadView() else { return }
+        let searchBar: UISearchBar = UISearchBar()
+        searchBar.text = "SHOW NOT FOUND"
+        sut.searchBar(searchBar, textDidChange: "")
+        sut.enableFilter(searchBar)
+        expect(self.spy.onSearchCalled).to(beTrue())
+    }
+
+    func testViewControllerCancelSearch() {
+        guard let sut = self.loadView() else { return }
+        let searchBar: UISearchBar = UISearchBar()
+        searchBar.text = "Cards"
+        sut.searchBarCancelButtonClicked(searchBar)
+        expect(self.spy.onViewAppearCalled).to(beTrue())
+    }
 }
 
 extension ListViewControllerTests {
@@ -31,6 +57,7 @@ extension ListViewControllerTests {
         let bundle = Bundle.main
         let storyboard = UIStoryboard(name: "List", bundle: bundle)
         guard let sut: ListViewController = storyboard.instantiateViewController(withIdentifier: "List") as? ListViewController else { return nil }
+        sut.loadView()
         sut.viewModel = spy
         return sut
     }

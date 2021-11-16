@@ -9,7 +9,11 @@ import Lottie
 import UIKit
 
 class ListViewController: BaseViewController {
-    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var tableView: UITableView! {
+        didSet {
+            self.tableView.keyboardDismissMode = .onDrag
+        }
+    }
 
     @IBOutlet private var animationView: AnimationView! {
         didSet {
@@ -32,14 +36,6 @@ class ListViewController: BaseViewController {
 
     private let search = UISearchController(searchResultsController: nil)
 
-    private var shows: [Show]? {
-        didSet {
-            self.refreshTableView()
-            self.stopAnimation()
-            self.setSearchControllerIntoNavigation()
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initTitle()
@@ -61,7 +57,11 @@ class ListViewController: BaseViewController {
         super.bindViewModels()
         self.viewModel.models.subscribe { [weak self] response in
             guard let self = self, let models = response else { return }
-            self.shows = models
+
+            self.refreshTableView()
+            self.stopAnimation()
+            self.setSearchControllerIntoNavigation()
+            self.hideKeyboard()
 
             let hasResults = !models.isEmpty
             if hasResults {
@@ -86,12 +86,12 @@ class ListViewController: BaseViewController {
 
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.shows?.count ?? 0
+        return self.viewModel.models.value?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell: ShowsCell = tableView.dequeueReusableCell(withIdentifier: ShowsCell.identifier, for: indexPath) as? ShowsCell,
-              let show = self.shows?[safe: indexPath.row] else { return UITableViewCell() }
+              let show = self.viewModel.models.value?[safe: indexPath.row] else { return UITableViewCell() }
         cell(self.view.frame.height, show)
         return cell
     }
@@ -218,5 +218,21 @@ extension ListViewController: UISearchBarDelegate {
     private func clearSearchBar() {
         self.search.searchBar.text?.removeAll()
     }
+
+    private func hideKeyboard() {
+        self.search.searchBar.endEditing(true)
+    }
 }
 
+// MARK: - Scrolling
+
+extension ListViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+
+        guard (offsetY > contentHeight - scrollView.frame.height * 4),
+              !self.viewModel.isLoading, !self.isSearched() else { return }
+        self.viewModel.fetchNext()
+    }
+}

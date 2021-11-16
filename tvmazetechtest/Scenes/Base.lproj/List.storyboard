@@ -89,10 +89,10 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EwH-ud-dYb" customClass="AnimationView" customModule="Lottie">
-                                <rect key="frame" x="179" y="447" width="56" height="56"/>
+                                <rect key="frame" x="175" y="323" width="64" height="64"/>
                                 <color key="backgroundColor" white="0.59999999999999998" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="56" id="7n9-OB-sFb"/>
+                                    <constraint firstAttribute="width" constant="64" id="7n9-OB-sFb"/>
                                     <constraint firstAttribute="width" secondItem="EwH-ud-dYb" secondAttribute="height" id="nHg-RO-dEG"/>
                                 </constraints>
                             </view>
@@ -107,7 +107,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="EyM-Jw-TA3" firstAttribute="top" secondItem="5Lm-N6-CR0" secondAttribute="top" id="4pp-my-upF"/>
-                            <constraint firstItem="EwH-ud-dYb" firstAttribute="centerY" secondItem="060-IH-jXI" secondAttribute="centerY" id="8Ju-Cy-txH"/>
+                            <constraint firstItem="EwH-ud-dYb" firstAttribute="centerY" secondItem="060-IH-jXI" secondAttribute="centerY" constant="-120" id="8Ju-Cy-txH"/>
                             <constraint firstAttribute="trailing" secondItem="EyM-Jw-TA3" secondAttribute="trailing" id="9Hg-hh-Iaa"/>
                             <constraint firstItem="sQX-gQ-jd3" firstAttribute="width" secondItem="5Lm-N6-CR0" secondAttribute="width" multiplier="0.75" id="9J8-GE-k8k"/>
                             <constraint firstItem="sQX-gQ-jd3" firstAttribute="top" secondItem="060-IH-jXI" secondAttribute="top" constant="120" id="LJ2-nM-N8Z"/>
