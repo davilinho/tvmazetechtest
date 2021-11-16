@@ -59,6 +59,8 @@
 		D59BFDC527441B7A00D766AF /* StoreShowsDatasourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDC427441B7A00D766AF /* StoreShowsDatasourceTests.swift */; };
 		D59BFDCA274461C400D766AF /* DetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDC9274461C400D766AF /* DetailRepository.swift */; };
 		D59BFDCF274464E600D766AF /* DetailRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDCE274464E600D766AF /* DetailRepositoryTests.swift */; };
+		D59BFDD22744680900D766AF /* DetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDD12744680900D766AF /* DetailUseCase.swift */; };
+		D59BFDD52744686A00D766AF /* DetailUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDD42744686A00D766AF /* DetailUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +142,8 @@
 		D59BFDC427441B7A00D766AF /* StoreShowsDatasourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreShowsDatasourceTests.swift; sourceTree = "<group>"; };
 		D59BFDC9274461C400D766AF /* DetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepository.swift; sourceTree = "<group>"; };
 		D59BFDCE274464E600D766AF /* DetailRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepositoryTests.swift; sourceTree = "<group>"; };
+		D59BFDD12744680900D766AF /* DetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUseCase.swift; sourceTree = "<group>"; };
+		D59BFDD42744686A00D766AF /* DetailUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUseCaseTests.swift; sourceTree = "<group>"; };
 		DD37BCC9B14B8B91FAC1FE10 /* Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig"; path = "Target Support Files/Pods-tvmazetechtest-tvmazetechtestUITests/Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -617,6 +621,7 @@
 			isa = PBXGroup;
 			children = (
 				D59BFDC8274461B700D766AF /* Repository */,
+				D59BFDD0274467F600D766AF /* Usecase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -641,6 +646,7 @@
 			isa = PBXGroup;
 			children = (
 				D59BFDCD274464DA00D766AF /* Repository */,
+				D59BFDD32744685900D766AF /* Usecase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -651,6 +657,22 @@
 				D59BFDCE274464E600D766AF /* DetailRepositoryTests.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		D59BFDD0274467F600D766AF /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				D59BFDD12744680900D766AF /* DetailUseCase.swift */,
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		D59BFDD32744685900D766AF /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				D59BFDD42744686A00D766AF /* DetailUseCaseTests.swift */,
+			);
+			path = Usecase;
 			sourceTree = "<group>";
 		};
 		D6B3D8CED1BCA63A5663492C /* Frameworks */ = {
@@ -940,6 +962,7 @@
 				D58EB4852742735700F60ED9 /* BaseViewModel.swift in Sources */,
 				D58EB435273BFCD400F60ED9 /* SceneDelegate.swift in Sources */,
 				D58EB46F274270C500F60ED9 /* Inject.swift in Sources */,
+				D59BFDD22744680900D766AF /* DetailUseCase.swift in Sources */,
 				D58EB4AE2742D8DE00F60ED9 /* ListRepository.swift in Sources */,
 				D58EB4872742736F00F60ED9 /* NavigationBarSettings.swift in Sources */,
 				D58EB471274270E000F60ED9 /* Resolver.swift in Sources */,
@@ -958,6 +981,7 @@
 			files = (
 				D58EB48E2742AAFC00F60ED9 /* StoreDatasourceTests.swift in Sources */,
 				D58EB4C0274314CE00F60ED9 /* ListUseCaseTests.swift in Sources */,
+				D59BFDD52744686A00D766AF /* DetailUseCaseTests.swift in Sources */,
 				D58EB4C52743173E00F60ED9 /* ListViewModelTests.swift in Sources */,
 				D58EB4C3274316FF00F60ED9 /* ListViewModelMock.swift in Sources */,
 				D58EB4B72743123000F60ED9 /* ComponentsTests.swift in Sources */,
