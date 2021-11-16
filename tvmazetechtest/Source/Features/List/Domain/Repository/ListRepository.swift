@@ -14,7 +14,7 @@ class ListRepository: InjectableComponent {
     @Inject
     private var store: StoreShowsDatasource
 
-    func fetch(by page: Int? = 0, completion:  @escaping ([Show]) -> Void) {
+    func fetch(by page: Int? = 0, completion: @escaping ([Show]) -> Void) {
         self.remote.get(to: "shows", with: PageRequest(page: page)) { (result: Result<[Show], BaseError>) in
             switch result {
             case .success(let response):
@@ -32,15 +32,12 @@ class ListRepository: InjectableComponent {
         }
     }
 
-    func search(by query: String? = nil, completion:  @escaping ([SearchResponse]) -> Void) {
+    func search(by query: String? = nil, completion: @escaping ([SearchResponse]) -> Void) {
         self.remote.get(to: "search/shows", with: SearchRequest(query: query)) { (result: Result<[SearchResponse], BaseError>) in
             switch result {
             case .success(let response):
-                CoreLog.business.info("%@", response)
-
                 let model = StoredShows(models: response.compactMap { $0.show })
                 self.store.save(model)
-
                 completion(response)
             case .failure(let error):
                 CoreLog.business.error("%@", error.description)
