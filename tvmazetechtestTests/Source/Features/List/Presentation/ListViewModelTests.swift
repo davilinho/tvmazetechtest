@@ -30,17 +30,7 @@ class ListViewModelTests: XCTestCase {
                 expect(models).toNot(beNil())
                 done()
             }
-            self.viewModel.fecthNext(page: 1)
-        }
-    }
-
-    func testGetPageOutOfRangeFailure() {
-        waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.viewModel.models.subscribe { models in
-                expect(models).to(beEmpty())
-                done()
-            }
-            self.viewModel.fecthNext(page: 100000000)
+            self.viewModel.fetchNext()
         }
     }
 

@@ -22,6 +22,10 @@ class Observable<T> {
         self.value = nil
     }
 
+    init(_ value: T) {
+        self.value = value
+    }
+
     func subscribe(_ observer: Observer?) {
         self.observer = observer
     }

@@ -36,16 +36,6 @@ class ListViewController: BaseViewController {
 
     private let search = UISearchController(searchResultsController: nil)
 
-    private var shows: [Show] = [] {
-        didSet {
-            guard !self.shows.isEmpty else { return }
-            self.refreshTableView()
-            self.stopAnimation()
-            self.setSearchControllerIntoNavigation()
-            self.hideKeyboard()
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initTitle()
@@ -67,7 +57,11 @@ class ListViewController: BaseViewController {
         super.bindViewModels()
         self.viewModel.models.subscribe { [weak self] response in
             guard let self = self, let models = response else { return }
-            self.shows.append(contentsOf: models)
+
+            self.refreshTableView()
+            self.stopAnimation()
+            self.setSearchControllerIntoNavigation()
+            self.hideKeyboard()
 
             let hasResults = !models.isEmpty
             if hasResults {
@@ -86,19 +80,18 @@ class ListViewController: BaseViewController {
     @objc private func fetch() {
         guard !self.isSearched() else { return }
         self.playAnimation()
-        self.shows.removeAll()
         self.viewModel.onViewDidAppear()
     }
 }
 
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.shows.count
+        return self.viewModel.models.value?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell: ShowsCell = tableView.dequeueReusableCell(withIdentifier: ShowsCell.identifier, for: indexPath) as? ShowsCell,
-              let show = self.shows[safe: indexPath.row] else { return UITableViewCell() }
+              let show = self.viewModel.models.value?[safe: indexPath.row] else { return UITableViewCell() }
         cell(self.view.frame.height, show)
         return cell
     }
@@ -214,7 +207,6 @@ extension ListViewController: UISearchBarDelegate {
 
     private func search(by text: String) {
         self.playAnimation()
-        self.shows.removeAll()
         self.viewModel.search(by: text)
     }
 
@@ -239,8 +231,8 @@ extension ListViewController {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
 
-        if (offsetY > contentHeight - scrollView.frame.height * 4), !self.viewModel.isLoading, !self.isSearched() {
-            self.viewModel.fecthNext()
-        }
+        guard (offsetY > contentHeight - scrollView.frame.height * 4),
+              !self.viewModel.isLoading, !self.isSearched() else { return }
+        self.viewModel.fetchNext()
     }
 }

@@ -11,25 +11,27 @@ class ListViewModel: InjectableComponent & BaseViewModel {
     @Inject
     private var useCase: ListUseCase
 
-    private var currentPage: Int = 0
+    private (set) var isLoading: Bool = true
+    private (set) var models = Observable<[Show]>([])
 
-    var isLoading: Bool = true
-    var models = Observable<[Show]>()
+    private var currentPage: Int = 0
 
     func onViewDidAppear() {
         self.resetPage()
         self.useCase.fetch() { [weak self] in
             guard let self = self else { return }
-            self.update(models: $0)
+            self.deactiveLoading()
+            self.set(models: $0)
         }
     }
 
-    func fecthNext() {
-        self.setIsLoading()
+    func fetchNext() {
+        self.activeLoading()
         self.increasePage()
         self.useCase.fetch(by: self.currentPage) { [weak self] in
             guard let self = self else { return }
-            self.update(models: $0)
+            self.deactiveLoading()
+            self.add(models: $0)
         }
     }
 
@@ -37,12 +39,21 @@ class ListViewModel: InjectableComponent & BaseViewModel {
         self.resetPage()
         self.useCase.search(by: query) { [weak self] in
             guard let self = self else { return }
-            self.update(models: $0.compactMap { $0.show })
+            self.deactiveLoading()
+            self.set(models: $0.compactMap { $0.show })
         }
     }
+}
 
-    private func setIsLoading() {
+// MARK: - Private logic
+
+extension ListViewModel {
+    private func activeLoading() {
         self.isLoading = true
+    }
+
+    private func deactiveLoading() {
+        self.isLoading = false
     }
 
     private func resetPage() {
@@ -53,8 +64,11 @@ class ListViewModel: InjectableComponent & BaseViewModel {
         self.currentPage += 1
     }
 
-    private func update(models: [Show]) {
-        self.isLoading = false
+    private func set(models: [Show]) {
         self.models.value = models
+    }
+
+    private func add(models: [Show]) {
+        self.models.value?.append(contentsOf: models)
     }
 }
