@@ -54,6 +54,7 @@
 		D58EB4CF274320A000F60ED9 /* ListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4CE274320A000F60ED9 /* ListViewControllerTests.swift */; };
 		D58EB4D12743239300F60ED9 /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4D02743239300F60ED9 /* SearchRequest.swift */; };
 		D58EB4D32743254000F60ED9 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB4D22743254000F60ED9 /* SearchResponse.swift */; };
+		D59BFDBF27440C6E00D766AF /* StoredShows.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDBE27440C6E00D766AF /* StoredShows.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		D58EB4CE274320A000F60ED9 /* ListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewControllerTests.swift; sourceTree = "<group>"; };
 		D58EB4D02743239300F60ED9 /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
 		D58EB4D22743254000F60ED9 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		D59BFDBE27440C6E00D766AF /* StoredShows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredShows.swift; sourceTree = "<group>"; };
 		DD37BCC9B14B8B91FAC1FE10 /* Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig"; path = "Target Support Files/Pods-tvmazetechtest-tvmazetechtestUITests/Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -383,6 +385,7 @@
 				D58EB4D02743239300F60ED9 /* SearchRequest.swift */,
 				D58EB4D22743254000F60ED9 /* SearchResponse.swift */,
 				D58EB4A62742D17D00F60ED9 /* Show.swift */,
+				D59BFDBE27440C6E00D766AF /* StoredShows.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -864,6 +867,7 @@
 				D58EB471274270E000F60ED9 /* Resolver.swift in Sources */,
 				D58EB4812742732600F60ED9 /* CoreLog.swift in Sources */,
 				D58EB4D32743254000F60ED9 /* SearchResponse.swift in Sources */,
+				D59BFDBF27440C6E00D766AF /* StoredShows.swift in Sources */,
 				D58EB479274271B000F60ED9 /* RemoteDatasource.swift in Sources */,
 				D58EB4CA27431D2400F60ED9 /* ShowsCell.swift in Sources */,
 				D58EB4C727431C5F00F60ED9 /* ListViewController.swift in Sources */,

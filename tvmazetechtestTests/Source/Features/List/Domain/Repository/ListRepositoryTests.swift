@@ -10,14 +10,30 @@ import XCTest
 import Nimble
 
 class ListRepositoryTests: XCTestCase {
-
     @Inject
     private var repository: ListRepository
+
+    @StorageDatasource
+    private var storedShows: StoredShows?
+
+    override func setUp() {
+        super.setUp()
+        self.storedShows = nil
+    }
 
     func testGetFirstPageSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
             self.repository.fetch { (models: [Show]) in
                 expect(models).toNot(beNil())
+                done()
+            }
+        }
+    }
+
+    func testGetFirstPageStoredSuccessful() {
+        waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
+            self.repository.fetch { _ in
+                expect(self.storedShows?.models).toNot(beNil())
                 done()
             }
         }
@@ -32,10 +48,28 @@ class ListRepositoryTests: XCTestCase {
         }
     }
 
+    func testGetSecondPageStoredSuccessful() {
+        waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
+            self.repository.fetch(by: 1) { _ in
+                expect(self.storedShows?.models).toNot(beNil())
+                done()
+            }
+        }
+    }
+
     func testGetPageOutOfRangeFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
             self.repository.fetch(by: 100000000) { (models: [Show]) in
                 expect(models).to(beEmpty())
+                done()
+            }
+        }
+    }
+
+    func testGetPageOutOfRangeStoredFailure() {
+        waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
+            self.repository.fetch(by: 100000000) { _ in
+                expect(self.storedShows?.models).to(beNil())
                 done()
             }
         }
@@ -50,10 +84,28 @@ class ListRepositoryTests: XCTestCase {
         }
     }
 
+    func testGetSearchStoredSuccessful() {
+        waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
+            self.repository.search(by: "Cars") { _ in
+                expect(self.storedShows?.models).toNot(beNil())
+                done()
+            }
+        }
+    }
+
     func testGetSearchFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
             self.repository.search(by: "SHOW NOT FOUND") { (models: [SearchResponse]) in
                 expect(models).to(beEmpty())
+                done()
+            }
+        }
+    }
+
+    func testGetSearchStoredFailure() {
+        waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
+            self.repository.search(by: "SHOW NOT FOUND") { _ in
+                expect(self.storedShows?.models).to(beEmpty())
                 done()
             }
         }
