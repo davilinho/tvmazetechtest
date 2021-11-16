@@ -13,12 +13,12 @@ class ListRepositoryTests: XCTestCase {
     @Inject
     private var repository: ListRepository
 
-    @StorageDatasource
-    private var storedShows: StoredShows?
+    @Inject
+    private var store: StoreShowsDatasource
 
     override func setUp() {
         super.setUp()
-        self.storedShows = nil
+        self.store.clear()
     }
 
     func testGetFirstPageSuccessful() {
@@ -33,7 +33,7 @@ class ListRepositoryTests: XCTestCase {
     func testGetFirstPageStoredSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
             self.repository.fetch { _ in
-                expect(self.storedShows?.models).toNot(beNil())
+                expect(self.store.retrieve()?.models).toNot(beNil())
                 done()
             }
         }
@@ -51,7 +51,7 @@ class ListRepositoryTests: XCTestCase {
     func testGetSecondPageStoredSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
             self.repository.fetch(by: 1) { _ in
-                expect(self.storedShows?.models).toNot(beNil())
+                expect(self.store.retrieve()?.models).toNot(beNil())
                 done()
             }
         }
@@ -69,7 +69,7 @@ class ListRepositoryTests: XCTestCase {
     func testGetPageOutOfRangeStoredFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
             self.repository.fetch(by: 100000000) { _ in
-                expect(self.storedShows?.models).to(beNil())
+                expect(self.store.retrieve()?.models).to(beNil())
                 done()
             }
         }
@@ -87,7 +87,7 @@ class ListRepositoryTests: XCTestCase {
     func testGetSearchStoredSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
             self.repository.search(by: "Cars") { _ in
-                expect(self.storedShows?.models).toNot(beNil())
+                expect(self.store.retrieve()?.models).toNot(beNil())
                 done()
             }
         }
@@ -105,7 +105,7 @@ class ListRepositoryTests: XCTestCase {
     func testGetSearchStoredFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
             self.repository.search(by: "SHOW NOT FOUND") { _ in
-                expect(self.storedShows?.models).to(beEmpty())
+                expect(self.store.retrieve()?.models).to(beEmpty())
                 done()
             }
         }

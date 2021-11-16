@@ -1,5 +1,5 @@
 //
-//  StorageDatasource.swift
+//  StoreDatasource.swift
 //  tvmazetechtest
 //
 //  Created by David Martin on 15/11/21.
@@ -7,8 +7,25 @@
 
 import Foundation
 
+class StoreDatasource<T: Codable>: InjectableComponent {
+    @Store
+    private var model: T?
+
+    func retrieve() -> T? {
+        return self.model
+    }
+
+    func save(value: T) {
+        self.model = value
+    }
+
+    func clear() {
+        self.model = nil
+    }
+}
+
 @propertyWrapper
-struct StorageDatasource<T: Codable> {
+struct Store<T: Codable> {
     private let key: String
 
     public init() {
