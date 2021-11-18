@@ -11,6 +11,7 @@ open class BaseViewController: UIViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
+        self.setBackButtonNavigationController()
     }
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,5 +38,12 @@ extension BaseViewController {
     private func setupNavigationBar() {
         let settings: NavigationBarSettings = NavigationBarSettings()
         self.navigationController?.navigationBar.set(settings: settings)
+    }
+
+    private func setBackButtonNavigationController() {
+        let backButton = UIBarButtonItem()
+        backButton.title = nil
+        backButton.tintColor = .lightGray
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
 }

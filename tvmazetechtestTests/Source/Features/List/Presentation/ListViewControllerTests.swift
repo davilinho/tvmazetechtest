@@ -61,8 +61,9 @@ class ListViewControllerTests: XCTestCase {
     }
 
     func testViewControllerDidSelect() {
-        guard let sut = self.loadView() else { return }
+        guard let sut = self.loadViewWithoutMock() else { return }
         sut.viewDidAppear(true)
+        sut.bindViewModels()
         sut.tableView(UITableView(), didSelectRowAt: IndexPath(row: 0, section: 0))
         sut.viewModel.models.subscribe { _  in
             expect(self.spy.onDidSelectCalled).to(beTrue())
@@ -77,6 +78,14 @@ extension ListViewControllerTests {
         guard let sut: ListViewController = storyboard.instantiateViewController(withIdentifier: "List") as? ListViewController else { return nil }
         sut.loadView()
         sut.viewModel = spy
+        return sut
+    }
+
+    private func loadViewWithoutMock() -> ListViewController? {
+        let bundle = Bundle.main
+        let storyboard = UIStoryboard(name: "List", bundle: bundle)
+        guard let sut: ListViewController = storyboard.instantiateViewController(withIdentifier: "List") as? ListViewController else { return nil }
+        sut.loadView()
         return sut
     }
 }

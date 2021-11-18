@@ -11,6 +11,8 @@
 		47826BB358D38C59BBC9ECAA /* Pods_tvmazetechtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CACE835C7DE465DA6AC2B6D /* Pods_tvmazetechtest.framework */; };
 		C3B4C7085723C1D38E37CE7C /* Pods_tvmazetechtest_tvmazetechtestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A81628584F2C63766BF569 /* Pods_tvmazetechtest_tvmazetechtestUITests.framework */; };
 		D531ADB1274657C5000694EB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D531ADB0274657C5000694EB /* UIView+Extension.swift */; };
+		D531ADB3274682BD000694EB /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D531ADB2274682BD000694EB /* UILabel+Extension.swift */; };
+		D531ADB5274685F5000694EB /* UILabelExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D531ADB4274685F5000694EB /* UILabelExtensionTests.swift */; };
 		D58EB433273BFCD400F60ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB432273BFCD400F60ED9 /* AppDelegate.swift */; };
 		D58EB435273BFCD400F60ED9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB434273BFCD400F60ED9 /* SceneDelegate.swift */; };
 		D58EB43A273BFCD400F60ED9 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D58EB438273BFCD400F60ED9 /* List.storyboard */; };
@@ -100,6 +102,8 @@
 		5CACE835C7DE465DA6AC2B6D /* Pods_tvmazetechtest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvmazetechtest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B322FB54ED2EA6E80C1C4573 /* Pods-tvmazetechtest-tvmazetechtestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvmazetechtest-tvmazetechtestUITests.release.xcconfig"; path = "Target Support Files/Pods-tvmazetechtest-tvmazetechtestUITests/Pods-tvmazetechtest-tvmazetechtestUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D531ADB0274657C5000694EB /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		D531ADB2274682BD000694EB /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		D531ADB4274685F5000694EB /* UILabelExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensionTests.swift; sourceTree = "<group>"; };
 		D58EB42F273BFCD400F60ED9 /* tvmazetechtest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tvmazetechtest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58EB432273BFCD400F60ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D58EB434273BFCD400F60ED9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 				D58EB47C2742722700F60ED9 /* Codable+Extension.swift */,
 				D58EB47E2742723E00F60ED9 /* Collection+Safe.swift */,
 				D531ADB0274657C5000694EB /* UIView+Extension.swift */,
+				D531ADB2274682BD000694EB /* UILabel+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -472,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				D58EB4A42742CF3100F60ED9 /* ArraySafeTests.swift */,
+				D531ADB4274685F5000694EB /* UILabelExtensionTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1023,6 +1029,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D531ADB3274682BD000694EB /* UILabel+Extension.swift in Sources */,
 				D531ADB1274657C5000694EB /* UIView+Extension.swift in Sources */,
 				D58EB4B02742D94000F60ED9 /* ListUseCase.swift in Sources */,
 				D58EB47D2742722700F60ED9 /* Codable+Extension.swift in Sources */,
@@ -1077,6 +1084,7 @@
 				D59BFDE327446F9F00D766AF /* DetailViewControllerTests.swift in Sources */,
 				D58EB49E2742C68100F60ED9 /* ResolverObjectMockTest.swift in Sources */,
 				D58EB4922742B21700F60ED9 /* RemoteDatasourceTests.swift in Sources */,
+				D531ADB5274685F5000694EB /* UILabelExtensionTests.swift in Sources */,
 				D58EB4A22742CAEB00F60ED9 /* ObservableTests.swift in Sources */,
 				D58EB4CF274320A000F60ED9 /* ListViewControllerTests.swift in Sources */,
 				D58EB4BE2743137600F60ED9 /* ListRepositoryTests.swift in Sources */,

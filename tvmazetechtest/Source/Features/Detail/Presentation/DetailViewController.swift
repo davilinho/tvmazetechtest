@@ -9,33 +9,36 @@ import SDWebImage
 import UIKit
 
 class DetailViewController: BaseViewController {
+    @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var nameLabel: UILabel!
-
-    @IBOutlet private var avatarImage: UIImageView!
-
-    @IBOutlet private var ratingView: UIView! {
+    @IBOutlet private var avatarImage: UIImageView! {
         didSet {
-            self.ratingView.rounded()
+            self.avatarImage.dropShadow()
         }
     }
-
+    @IBOutlet private var ratingView: UIView! {
+        didSet {
+            self.ratingView.isHidden = true
+            self.ratingView.rounded()
+            self.ratingView.dropShadow()
+        }
+    }
     @IBOutlet private var ratingLabel: UILabel!
-
     @IBOutlet private var summaryLabel: UILabel!
 
     @Inject
-    private var viewModel: DetailViewModel
+    var viewModel: DetailViewModel
 
     var id: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initTitle()
+        self.fetch()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.fetch()
+    override func viewDidLayoutSubviews() {
+        self.scrollView.contentSize = self.view.frame.size
     }
 
     override func bindViewModels() {
@@ -69,23 +72,20 @@ extension DetailViewController {
         self.nameLabel.text = model.name
 
         if let url = URL(string: model.image?.original ?? "") {
-            let placeholderImage = UIImage(named: "placeholder")
-            self.avatarImage.sd_setImage(with: url, placeholderImage: placeholderImage, options: .continueInBackground)
+            self.avatarImage.sd_setImage(with: url)
+        } else {
+            let noImage = UIImage(named: "noimage")
+            self.avatarImage.image = noImage
         }
 
-        self.ratingLabel.text = model.rating?.average?.description
+        self.ratingView.isHidden = false
+
+        if let rating = model.rating?.average?.description, !rating.isEmpty {
+            self.ratingLabel.text = rating
+        } else {
+            self.ratingLabel.text = "N/A"
+        }
+
         self.summaryLabel.setHTMLFromString(htmlText: model.summary ?? "")
-    }
-}
-
-extension UILabel {
-    func setHTMLFromString(htmlText: String) {
-        let modifiedFont = String(format: "<div style=\"text-align: center;\"><span style=\"font-family: '-apple-system', 'Verdana'; color: '#E0E0E0'; font-size: 16;\">%@</span></div>", htmlText)
-        if let attrStr = try? NSAttributedString(data: modifiedFont.data(using: .unicode, allowLossyConversion: true)!,
-                                                 options: [.documentType: NSAttributedString.DocumentType.html,
-                                                           .characterEncoding: String.Encoding.utf8.rawValue],
-                                                 documentAttributes: nil) {
-            self.attributedText = attrStr
-        }
     }
 }
