@@ -9,12 +9,13 @@
 import Foundation
 
 class ListViewModelMock: ListViewModel {
-    private(set) var onViewAppearCalled = false
+    private(set) var onFetchCalled = false
     private(set) var onFetchNextCalled = false
     private(set) var onSearchCalled = false
+    private(set) var onDidSelectCalled = false
 
-    override func onViewDidAppear() {
-        self.onViewAppearCalled = true
+    override func fetch() {
+        self.onFetchCalled = true
     }
 
     override func fetchNext() {
@@ -23,5 +24,9 @@ class ListViewModelMock: ListViewModel {
 
     override func search(by query: String? = nil) {
         self.onSearchCalled = true
+    }
+
+    override func didSelect(by id: Int) {
+        self.onDidSelectCalled = true
     }
 }

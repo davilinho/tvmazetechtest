@@ -39,7 +39,8 @@ class ShowsCell: UITableViewCell {
             let placeholderImage = UIImage(named: "placeholder")
             self.avatarImage.sd_setImage(with: url, placeholderImage: placeholderImage, options: .continueInBackground)
         } else {
-            self.avatarImage.image = nil
+            let noImage = UIImage(named: "noimage")
+            self.avatarImage.image = noImage
         }
 
         self.nameLabel.text = model.name

@@ -13,10 +13,10 @@ import SnapshotTesting
 class ListViewControllerTests: XCTestCase {
     let spy: ListViewModelMock = ListViewModelMock()
 
-    func testViewControllerDidAppear() {
+    func testViewControllerFetch() {
         guard let sut = self.loadView() else { return }
         sut.viewDidAppear(true)
-        expect(self.spy.onViewAppearCalled).to(beTrue())
+        expect(self.spy.onFetchCalled).to(beTrue())
     }
 
     func testViewControllerAssertSnapshotSuccessful() {
@@ -48,7 +48,26 @@ class ListViewControllerTests: XCTestCase {
         let searchBar: UISearchBar = UISearchBar()
         searchBar.text = "Cards"
         sut.searchBarCancelButtonClicked(searchBar)
-        expect(self.spy.onViewAppearCalled).to(beTrue())
+        expect(self.spy.onFetchCalled).to(beTrue())
+    }
+
+    func testViewControllerNavigateToDetail() {
+        guard let sut = self.loadView() else { return }
+        sut.viewDidAppear(true)
+        sut.navigate(to: 1)
+        sut.viewModel.models.subscribe { _  in
+            expect(self.spy.onDidSelectCalled).to(beTrue())
+        }
+    }
+
+    func testViewControllerDidSelect() {
+        guard let sut = self.loadViewWithoutMock() else { return }
+        sut.viewDidAppear(true)
+        sut.bindViewModels()
+        sut.tableView(UITableView(), didSelectRowAt: IndexPath(row: 0, section: 0))
+        sut.viewModel.models.subscribe { _  in
+            expect(self.spy.onDidSelectCalled).to(beTrue())
+        }
     }
 }
 
@@ -59,6 +78,14 @@ extension ListViewControllerTests {
         guard let sut: ListViewController = storyboard.instantiateViewController(withIdentifier: "List") as? ListViewController else { return nil }
         sut.loadView()
         sut.viewModel = spy
+        return sut
+    }
+
+    private func loadViewWithoutMock() -> ListViewController? {
+        let bundle = Bundle.main
+        let storyboard = UIStoryboard(name: "List", bundle: bundle)
+        guard let sut: ListViewController = storyboard.instantiateViewController(withIdentifier: "List") as? ListViewController else { return nil }
+        sut.loadView()
         return sut
     }
 }

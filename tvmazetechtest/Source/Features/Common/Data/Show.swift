@@ -8,8 +8,8 @@
 import Foundation
 
 struct Show: Codable {
-    let id: Int?
-    let name: String?
+    let id: Int
+    let name: String
     let image: Image?
     let rating: Rating?
     let summary: String?

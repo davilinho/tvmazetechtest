@@ -8,6 +8,10 @@
 import Lottie
 import UIKit
 
+protocol ListViewControllerDelegate: AnyObject {
+    func navigateToDetail(by id: Int)
+}
+
 class ListViewController: BaseViewController {
     @IBOutlet private var tableView: UITableView! {
         didSet {
@@ -32,7 +36,11 @@ class ListViewController: BaseViewController {
         }
     }
 
-    @Inject var viewModel: ListViewModel
+    @Inject
+    var viewModel: ListViewModel
+
+    @Inject
+    private var wireframe: ListWireframe
 
     private let search = UISearchController(searchResultsController: nil)
 
@@ -70,17 +78,22 @@ class ListViewController: BaseViewController {
                 self.showNotFoundResultsLabel(for: self.search.searchBar.text)
             }
         }
+        self.viewModel.detailId.subscribe { [weak self] response in
+            guard let self = self, let id = response else { return }
+            self.navigate(to: id)
+        }
     }
 
     override func unBindViewModels() {
         super.unBindViewModels()
         self.viewModel.models.unsubscribe()
+        self.viewModel.detailId.unsubscribe()
     }
 
     @objc private func fetch() {
         guard !self.isSearched() else { return }
         self.playAnimation()
-        self.viewModel.onViewDidAppear()
+        self.viewModel.fetch()
     }
 }
 
@@ -119,11 +132,12 @@ extension ListViewController: UITableViewDataSource {
 
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        guard let model = self.viewModel.models.value?[safe: indexPath.row] else { return }
+        self.viewModel.didSelect(by: model.id)
     }
 }
 
-// MARK: - UI
+// MARK: - Presentation
 
 extension ListViewController {
     private func initTitle() {
@@ -155,6 +169,7 @@ extension ListViewController {
 extension ListViewController {
     private func initRefreshControl() {
         self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.tintColor = .lightGray
         self.tableView.refreshControl?.addTarget(self, action: #selector(self.fetch), for: .valueChanged)
     }
 }
@@ -234,5 +249,13 @@ extension ListViewController {
         guard (offsetY > contentHeight - scrollView.frame.height * 4),
               !self.viewModel.isLoading, !self.isSearched() else { return }
         self.viewModel.fetchNext()
+    }
+}
+
+// MARK: - Wireframe
+
+extension ListViewController {
+    func navigate(to id: Int) {
+        self.wireframe.navigate(to: .detail(by: id), with: self.navigationController)
     }
 }
