@@ -19,7 +19,6 @@
 		D58EB43C273BFCD700F60ED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D58EB43B273BFCD700F60ED9 /* Assets.xcassets */; };
 		D58EB43F273BFCD700F60ED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D58EB43D273BFCD700F60ED9 /* LaunchScreen.storyboard */; };
 		D58EB454273BFCD800F60ED9 /* tvmazetechtestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB453273BFCD800F60ED9 /* tvmazetechtestUITests.swift */; };
-		D58EB456273BFCD800F60ED9 /* tvmazetechtestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB455273BFCD800F60ED9 /* tvmazetechtestUITestsLaunchTests.swift */; };
 		D58EB46F274270C500F60ED9 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB46E274270C500F60ED9 /* Inject.swift */; };
 		D58EB471274270E000F60ED9 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB470274270E000F60ED9 /* Resolver.swift */; };
 		D58EB473274270F800F60ED9 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58EB472274270F800F60ED9 /* Observable.swift */; };
@@ -114,7 +113,6 @@
 		D58EB445273BFCD700F60ED9 /* tvmazetechtestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tvmazetechtestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58EB44F273BFCD800F60ED9 /* tvmazetechtestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tvmazetechtestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D58EB453273BFCD800F60ED9 /* tvmazetechtestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tvmazetechtestUITests.swift; sourceTree = "<group>"; };
-		D58EB455273BFCD800F60ED9 /* tvmazetechtestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tvmazetechtestUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D58EB46E274270C500F60ED9 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
 		D58EB470274270E000F60ED9 /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
 		D58EB472274270F800F60ED9 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -258,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				D58EB453273BFCD800F60ED9 /* tvmazetechtestUITests.swift */,
-				D58EB455273BFCD800F60ED9 /* tvmazetechtestUITestsLaunchTests.swift */,
 			);
 			path = tvmazetechtestUITests;
 			sourceTree = "<group>";
@@ -1099,7 +1096,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D58EB454273BFCD800F60ED9 /* tvmazetechtestUITests.swift in Sources */,
-				D58EB456273BFCD800F60ED9 /* tvmazetechtestUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
