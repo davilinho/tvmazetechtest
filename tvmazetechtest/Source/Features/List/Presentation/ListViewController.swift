@@ -40,7 +40,7 @@ class ListViewController: BaseViewController {
     var viewModel: ListViewModel
 
     @Inject
-    var wireframe: ListWireframe
+    private var wireframe: ListWireframe
 
     private let search = UISearchController(searchResultsController: nil)
 
@@ -137,7 +137,7 @@ extension ListViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - UI
+// MARK: - Presentation
 
 extension ListViewController {
     private func initTitle() {

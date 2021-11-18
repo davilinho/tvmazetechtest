@@ -9,7 +9,6 @@ target 'tvmazetechtest' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Performance'
-  pod "PromiseKit", "6.12.0"
   pod 'SDWebImage'
   pod 'lottie-ios'
 

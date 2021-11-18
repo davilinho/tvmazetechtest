@@ -10,7 +10,6 @@ import XCTest
 import Nimble
 
 class ListViewModelTests: XCTestCase {
-
     @Inject
     private var viewModel: ListViewModel
 

@@ -10,7 +10,6 @@ import XCTest
 import Nimble
 
 class ListWireframeTests: XCTestCase {
-
     @Inject
     private var wireframe: ListWireframe
 

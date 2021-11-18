@@ -10,7 +10,6 @@ import XCTest
 import Nimble
 
 class ListUseCaseTests: XCTestCase {
-
     @Inject
     private var useCase: ListUseCase
 
