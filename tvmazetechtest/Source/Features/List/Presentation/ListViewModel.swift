@@ -13,6 +13,7 @@ class ListViewModel: InjectableComponent & BaseViewModel {
 
     private (set) var isLoading: Bool = true
     private (set) var models = Observable<[Show]>([])
+    private (set) var detailId = Observable<Int>()
 
     private var currentPage: Int = 0
 
@@ -30,6 +31,10 @@ class ListViewModel: InjectableComponent & BaseViewModel {
     func search(by query: String? = nil) {
         self.resetPage()
         self.searchFetch(by: query)
+    }
+
+    func didSelect(by id: Int) {
+        self.select(by: id)
     }
 }
 
@@ -56,8 +61,12 @@ extension ListViewModel {
         self.useCase.search(by: query) { [weak self] in
             guard let self = self else { return }
             self.deactiveLoading()
-            self.set(models: $0.compactMap { $0.show })
+            self.set(models: $0)
         }
+    }
+
+    private func select(by id: Int) {
+        self.detailId.value = id
     }
 
     private func activeLoading() {

@@ -50,6 +50,24 @@ class ListViewControllerTests: XCTestCase {
         sut.searchBarCancelButtonClicked(searchBar)
         expect(self.spy.onFetchCalled).to(beTrue())
     }
+
+    func testViewControllerNavigateToDetail() {
+        guard let sut = self.loadView() else { return }
+        sut.viewDidAppear(true)
+        sut.navigate(to: 1)
+        sut.viewModel.models.subscribe { _  in
+            expect(self.spy.onDidSelectCalled).to(beTrue())
+        }
+    }
+
+    func testViewControllerDidSelect() {
+        guard let sut = self.loadView() else { return }
+        sut.viewDidAppear(true)
+        sut.tableView(UITableView(), didSelectRowAt: IndexPath(row: 0, section: 0))
+        sut.viewModel.models.subscribe { _  in
+            expect(self.spy.onDidSelectCalled).to(beTrue())
+        }
+    }
 }
 
 extension ListViewControllerTests {

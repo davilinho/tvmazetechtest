@@ -64,6 +64,12 @@
 		D59BFDD92744699700D766AF /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDD82744699700D766AF /* DetailViewModel.swift */; };
 		D59BFDDD27446C1C00D766AF /* DetailViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDDC27446C1C00D766AF /* DetailViewModelMock.swift */; };
 		D59BFDDF27446C6600D766AF /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDDE27446C6600D766AF /* DetailViewModelTests.swift */; };
+		D59BFDE127446F8000D766AF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDE027446F8000D766AF /* DetailViewController.swift */; };
+		D59BFDE327446F9F00D766AF /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDE227446F9F00D766AF /* DetailViewControllerTests.swift */; };
+		D59BFDE52744702D00D766AF /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D59BFDE42744702D00D766AF /* Detail.storyboard */; };
+		D59BFDEE27447CF900D766AF /* Wireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDED27447CF900D766AF /* Wireframe.swift */; };
+		D59BFDF12744F33500D766AF /* ListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDF02744F33500D766AF /* ListWireframe.swift */; };
+		D59BFDF62745031000D766AF /* ListWireframeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59BFDF52745031000D766AF /* ListWireframeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +156,12 @@
 		D59BFDD82744699700D766AF /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		D59BFDDC27446C1C00D766AF /* DetailViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelMock.swift; sourceTree = "<group>"; };
 		D59BFDDE27446C6600D766AF /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
+		D59BFDE027446F8000D766AF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D59BFDE227446F9F00D766AF /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
+		D59BFDE42744702D00D766AF /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		D59BFDED27447CF900D766AF /* Wireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wireframe.swift; sourceTree = "<group>"; };
+		D59BFDF02744F33500D766AF /* ListWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWireframe.swift; sourceTree = "<group>"; };
+		D59BFDF52745031000D766AF /* ListWireframeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWireframeTests.swift; sourceTree = "<group>"; };
 		DD37BCC9B14B8B91FAC1FE10 /* Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig"; path = "Target Support Files/Pods-tvmazetechtest-tvmazetechtestUITests/Pods-tvmazetechtest-tvmazetechtestUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,6 +262,7 @@
 			children = (
 				D58EB43D273BFCD700F60ED9 /* LaunchScreen.storyboard */,
 				D58EB438273BFCD400F60ED9 /* List.storyboard */,
+				D59BFDE42744702D00D766AF /* Detail.storyboard */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -283,6 +296,7 @@
 				D58EB46B27426F1600F60ED9 /* Extensions */,
 				D58EB46C27426F1B00F60ED9 /* Log */,
 				D58EB46D27426F2000F60ED9 /* Presentation */,
+				D59BFDEC27447CD400D766AF /* Wireframe */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -464,6 +478,7 @@
 			children = (
 				D58EB4A92742D8A300F60ED9 /* Domain */,
 				D58EB4AC2742D8B800F60ED9 /* Presentation */,
+				D59BFDEF2744F31A00D766AF /* Wireframe */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -536,6 +551,7 @@
 			children = (
 				D58EB4B92743134F00F60ED9 /* Domain */,
 				D58EB4BC2743136600F60ED9 /* Presentation */,
+				D59BFDF4274502FB00D766AF /* Wireframe */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -687,6 +703,7 @@
 			isa = PBXGroup;
 			children = (
 				D59BFDD82744699700D766AF /* DetailViewModel.swift */,
+				D59BFDE027446F8000D766AF /* DetailViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -696,6 +713,7 @@
 			children = (
 				D59BFDDB27446C0900D766AF /* Mock */,
 				D59BFDDE27446C6600D766AF /* DetailViewModelTests.swift */,
+				D59BFDE227446F9F00D766AF /* DetailViewControllerTests.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -706,6 +724,30 @@
 				D59BFDDC27446C1C00D766AF /* DetailViewModelMock.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		D59BFDEC27447CD400D766AF /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				D59BFDED27447CF900D766AF /* Wireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		D59BFDEF2744F31A00D766AF /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				D59BFDF02744F33500D766AF /* ListWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		D59BFDF4274502FB00D766AF /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				D59BFDF52745031000D766AF /* ListWireframeTests.swift */,
+			);
+			path = Wireframe;
 			sourceTree = "<group>";
 		};
 		D6B3D8CED1BCA63A5663492C /* Frameworks */ = {
@@ -833,6 +875,7 @@
 				D58EB43C273BFCD700F60ED9 /* Assets.xcassets in Resources */,
 				D58EB43A273BFCD400F60ED9 /* List.storyboard in Resources */,
 				D58EB4CD27431DA000F60ED9 /* loading.json in Resources */,
+				D59BFDE52744702D00D766AF /* Detail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -989,6 +1032,7 @@
 				D58EB4772742714400F60ED9 /* Components.swift in Sources */,
 				D58EB47B2742720C00F60ED9 /* StoreDatasource.swift in Sources */,
 				D58EB489274273DC00F60ED9 /* BaseError.swift in Sources */,
+				D59BFDF12744F33500D766AF /* ListWireframe.swift in Sources */,
 				D58EB47F2742723E00F60ED9 /* Collection+Safe.swift in Sources */,
 				D58EB4832742734200F60ED9 /* BaseViewController.swift in Sources */,
 				D58EB4B22742D9B300F60ED9 /* ListViewModel.swift in Sources */,
@@ -996,6 +1040,7 @@
 				D58EB4852742735700F60ED9 /* BaseViewModel.swift in Sources */,
 				D58EB435273BFCD400F60ED9 /* SceneDelegate.swift in Sources */,
 				D58EB46F274270C500F60ED9 /* Inject.swift in Sources */,
+				D59BFDEE27447CF900D766AF /* Wireframe.swift in Sources */,
 				D59BFDD22744680900D766AF /* DetailUseCase.swift in Sources */,
 				D58EB4AE2742D8DE00F60ED9 /* ListRepository.swift in Sources */,
 				D58EB4872742736F00F60ED9 /* NavigationBarSettings.swift in Sources */,
@@ -1004,6 +1049,7 @@
 				D58EB4D32743254000F60ED9 /* SearchResponse.swift in Sources */,
 				D59BFDBF27440C6E00D766AF /* StoredShows.swift in Sources */,
 				D58EB479274271B000F60ED9 /* RemoteDatasource.swift in Sources */,
+				D59BFDE127446F8000D766AF /* DetailViewController.swift in Sources */,
 				D58EB4CA27431D2400F60ED9 /* ShowsCell.swift in Sources */,
 				D58EB4C727431C5F00F60ED9 /* ListViewController.swift in Sources */,
 			);
@@ -1013,6 +1059,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D59BFDF62745031000D766AF /* ListWireframeTests.swift in Sources */,
 				D58EB48E2742AAFC00F60ED9 /* StoreDatasourceTests.swift in Sources */,
 				D58EB4C0274314CE00F60ED9 /* ListUseCaseTests.swift in Sources */,
 				D59BFDDD27446C1C00D766AF /* DetailViewModelMock.swift in Sources */,
@@ -1023,6 +1070,7 @@
 				D58EB4B72743123000F60ED9 /* ComponentsTests.swift in Sources */,
 				D58EB4982742C40100F60ED9 /* BaseErrorTests.swift in Sources */,
 				D59BFDCF274464E600D766AF /* DetailRepositoryTests.swift in Sources */,
+				D59BFDE327446F9F00D766AF /* DetailViewControllerTests.swift in Sources */,
 				D58EB49E2742C68100F60ED9 /* ResolverObjectMockTest.swift in Sources */,
 				D58EB4922742B21700F60ED9 /* RemoteDatasourceTests.swift in Sources */,
 				D58EB4A22742CAEB00F60ED9 /* ObservableTests.swift in Sources */,

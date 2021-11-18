@@ -23,11 +23,11 @@ open class BaseViewController: UIViewController {
     }
 
     func bindViewModels() {
-        CoreLog.ui.debug("Binding view models")
+        CoreLog.ui.info("Binding view models")
     }
 
     func unBindViewModels() {
-        CoreLog.ui.debug("Unbinding view models")
+        CoreLog.ui.info("Unbinding view models")
     }
 }
 

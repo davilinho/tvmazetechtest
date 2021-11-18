@@ -77,7 +77,7 @@ class ListRepositoryTests: XCTestCase {
 
     func testGetSearchSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.repository.search(by: "Cars") { (models: [SearchResponse]) in
+            self.repository.search(by: "Cars") { (models: [Show]) in
                 expect(models).toNot(beNil())
                 done()
             }
@@ -95,7 +95,7 @@ class ListRepositoryTests: XCTestCase {
 
     func testGetSearchFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.repository.search(by: "SHOW NOT FOUND") { (models: [SearchResponse]) in
+            self.repository.search(by: "SHOW NOT FOUND") { (models: [Show]) in
                 expect(models).to(beEmpty())
                 done()
             }

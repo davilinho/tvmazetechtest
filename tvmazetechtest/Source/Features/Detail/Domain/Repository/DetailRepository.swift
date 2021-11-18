@@ -39,10 +39,12 @@ extension DetailRepository {
                 let model = StoredShows(models: [response])
                 self.store.save(model)
                 completion(response)
+
             case .failure(let error):
                 CoreLog.business.error("%@", error.description)
-                self.store.clear()
-                completion(nil)
+
+                let storedModel = self.store.retrieve()?.models.filter { $0.id == id }.first
+                completion(storedModel)
             }
         }
     }

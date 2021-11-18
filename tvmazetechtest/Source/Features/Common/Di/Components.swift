@@ -17,6 +17,7 @@ class Components {
         Resolver.shared.add(type: ListRepository.self, { return ListRepository() })
         Resolver.shared.add(type: ListUseCase.self, { return ListUseCase() })
         Resolver.shared.add(type: ListViewModel.self, { return ListViewModel() })
+        Resolver.shared.add(type: ListWireframe.self, { return ListWireframe() })
 
         // Detail
         Resolver.shared.add(type: DetailRepository.self, { return DetailRepository() })
