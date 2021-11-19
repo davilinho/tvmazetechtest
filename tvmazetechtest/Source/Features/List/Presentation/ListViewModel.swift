@@ -9,7 +9,7 @@ import Foundation
 
 class ListViewModel: InjectableComponent & BaseViewModel {
     @Inject
-    private var useCase: ListUseCase
+    private var useCase: ListUseCase?
 
     private (set) var isLoading: Bool = true
     private (set) var models = Observable<[Show]>([])
@@ -42,7 +42,7 @@ class ListViewModel: InjectableComponent & BaseViewModel {
 
 extension ListViewModel {
     private func initialFetch() {
-        self.useCase.fetch() { [weak self] in
+        self.useCase?.fetch { [weak self] in
             guard let self = self else { return }
             self.deactiveLoading()
             self.set(models: $0)
@@ -50,7 +50,7 @@ extension ListViewModel {
     }
 
     private func paginationFetch() {
-        self.useCase.fetch(by: self.currentPage) { [weak self] in
+        self.useCase?.fetch(by: self.currentPage) { [weak self] in
             guard let self = self else { return }
             self.deactiveLoading()
             self.add(models: $0)
@@ -58,7 +58,7 @@ extension ListViewModel {
     }
 
     private func searchFetch(by query: String?) {
-        self.useCase.search(by: query) { [weak self] in
+        self.useCase?.search(by: query) { [weak self] in
             guard let self = self else { return }
             self.deactiveLoading()
             self.set(models: $0)

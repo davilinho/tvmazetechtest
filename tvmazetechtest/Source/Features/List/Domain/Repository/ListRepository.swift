@@ -9,36 +9,36 @@ import Foundation
 
 class ListRepository: InjectableComponent {
     @Inject
-    private var remote: RemoteDatasource
+    private var remote: RemoteDatasource?
 
     @Inject
-    private var store: StoreShowsDatasource
+    private var store: StoreShowsDatasource?
 
     func fetch(by page: Int = 0, completion: @escaping ([Show]) -> Void) {
         let isFirstPage = self.isFirst(page: page)
-        self.remote.get(to: "shows", with: PageRequest(page: page)) { (result: Result<[Show], BaseError>) in
+        self.remote?.get(to: "shows", with: PageRequest(page: page)) { (result: Result<[Show], BaseError>) in
             switch result {
             case .success(let response):
                 let model = StoredShows(models: response)
-                self.store.save(model, needRestore: isFirstPage)
+                self.store?.save(model, needRestore: isFirstPage)
                 completion(response)
 
             case .failure(let error):
                 CoreLog.business.error("%@", error.description)
                 guard isFirstPage else { completion([]); return }
-                let storedModels: [Show] = self.store.retrieve()?.models ?? []
+                let storedModels: [Show] = self.store?.retrieve()?.models ?? []
                 completion(storedModels)
             }
         }
     }
 
     func search(by query: String? = nil, completion: @escaping ([Show]) -> Void) {
-        self.remote.get(to: "search/shows", with: SearchRequest(query: query)) { (result: Result<[SearchResponse], BaseError>) in
+        self.remote?.get(to: "search/shows", with: SearchRequest(query: query)) { (result: Result<[SearchResponse], BaseError>) in
             switch result {
             case .success(let response):
                 let shows: [Show] = self.getShowsSortedByName(response)
                 let model = StoredShows(models: shows)
-                self.store.save(model)
+                self.store?.save(model)
                 completion(shows)
 
             case .failure(let error):

@@ -12,11 +12,11 @@ import Nimble
 class RemoteDatasourceTests: XCTestCase {
 
     @Inject
-    private var remote: RemoteDatasource
+    private var remote: RemoteDatasource?
 
     func testGetFirstPageSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.remote.get(to: "shows", with: PageRequest(page: 1)) { (result: Result<[Show], BaseError>) in
+            self.remote?.get(to: "shows", with: PageRequest(page: 1)) { (result: Result<[Show], BaseError>) in
                 switch result {
                 case .success(let response):
                     expect(response).toNot(beNil())
@@ -30,7 +30,7 @@ class RemoteDatasourceTests: XCTestCase {
 
     func testGetFirstPageFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.remote.get(to: "shows", with: PageRequest(page: 1)) { (result: Result<[String], BaseError>) in
+            self.remote?.get(to: "shows", with: PageRequest(page: 1)) { (result: Result<[String], BaseError>) in
                 switch result {
                 case .success(let response):
                     CoreLog.remote.debug("%@", response.testDescription)
@@ -44,7 +44,7 @@ class RemoteDatasourceTests: XCTestCase {
 
     func testGetPageOutOfRangeFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.remote.get(to: "shows", with: PageRequest(page: 100000000)) { (result: Result<[Show], BaseError>) in
+            self.remote?.get(to: "shows", with: PageRequest(page: 100000000)) { (result: Result<[Show], BaseError>) in
                 switch result {
                 case .success(let response):
                     CoreLog.remote.debug("%@", response.testDescription)
