@@ -1,0 +1,62 @@
+# REF: https://raw.githubusercontent.com/kevindelord/swift-style-guide/master/.swiftlint.yml
+# Find all the available rules by running: swiftlint rules
+
+disabled_rules: # rule identifiers to exclude from running
+  - colon
+  - identifier_name
+  - nesting
+  - function_parameter_count
+  - superfluous_disable_command
+opt_in_rules: # some rules are only opt-in
+  - control_statement
+  - empty_count
+  - trailing_newline
+  - comma
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - MediQuo-Base/Resource/SwiftGen/Generated
+  - MediQuo-BaseTests
+  - Pods
+
+# configurable rules can be customized from this configuration file
+# binary rules can set their severity level
+force_cast:
+  severity: warning # implicitly. Give warning only for force casting
+force_try:
+  severity: warning # explicitly
+line_length:
+  warning: 230
+  error: 250
+type_body_length:
+  warning: 300
+  error: 400
+file_length:
+  warning: 500
+  error: 800
+
+custom_rules:
+  uiimage:
+    included: ".*.swift"
+    name: "UIImage Hardcoded"
+    regex: UIImage\(named:\ ?\"(.*)\"\)
+    message: "Hardcoded UIImage strings are not allowed."
+    severity: allowed
+  uistoryboard:
+    included: ".*.swift"
+    name: "UIStoryboard Hardcoded"
+    regex: UIStoryboard\(name:\ ?\"(.*)\"\)
+    message: "Hardcoded UIStoryboard strings are not allowed."
+    severity: allowed
+  uinib:
+    included: ".*.swift"
+    name: "UINib Hardcoded"
+    regex: \(nibName:\ ?\"(.*)\"\)
+    message: "Hardcoded UINib strings are not allowed."
+    severity: error
+  uistoryboardsegue:
+    included: ".*.swift"
+    name: "UIStoryboardSegue Hardcoded"
+    regex: performSegue\(withIdentifier:\ ?\"(.*)\"\)
+    message: "Hardcoded UIStoryboardSegue strings are not allowed."
+    severity: error
+
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)

@@ -7,6 +7,7 @@
 
 import XCTest
 
+// swiftlint:disable type_name
 class tvmazetechtestUITests: XCTestCase {
     override func setUp() {
         continueAfterFailure = false

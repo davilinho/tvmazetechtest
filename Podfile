@@ -9,8 +9,9 @@ target 'tvmazetechtest' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Performance'
-  pod 'SDWebImage'
-  pod 'lottie-ios'
+  pod 'SDWebImage', '5.12.1'
+  pod 'SwiftLint', '0.45.0'
+  pod 'lottie-ios', '3.2.3'
 
   target 'tvmazetechtestTests' do
     inherit! :search_paths
