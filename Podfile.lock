@@ -120,31 +120,23 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - Nimble (9.2.1)
-  - PromiseKit (6.12.0):
-    - PromiseKit/CorePromise (= 6.12.0)
-    - PromiseKit/Foundation (= 6.12.0)
-    - PromiseKit/UIKit (= 6.12.0)
-  - PromiseKit/CorePromise (6.12.0)
-  - PromiseKit/Foundation (6.12.0):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.12.0):
-    - PromiseKit/CorePromise
   - PromisesObjC (2.0.0)
   - SDWebImage (5.12.1):
     - SDWebImage/Core (= 5.12.1)
   - SDWebImage/Core (5.12.1)
   - SnapshotTesting (1.8.2)
+  - SwiftLint (0.45.0)
 
 DEPENDENCIES:
   - Alamofire (= 5.4.0)
   - Firebase/Analytics
   - Firebase/Crashlytics
   - Firebase/Performance
-  - lottie-ios
+  - lottie-ios (= 3.2.3)
   - Nimble (= 9.2.1)
-  - PromiseKit (= 6.12.0)
-  - SDWebImage
+  - SDWebImage (= 5.12.1)
   - SnapshotTesting (~> 1.8.1)
+  - SwiftLint (= 0.45.0)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -164,10 +156,10 @@ SPEC REPOS:
     - lottie-ios
     - nanopb
     - Nimble
-    - PromiseKit
     - PromisesObjC
     - SDWebImage
     - SnapshotTesting
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
@@ -186,11 +178,11 @@ SPEC CHECKSUMS:
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
-  PromiseKit: c06835ba442ce5454ce3cdde470232804a6e4ff8
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   SnapshotTesting: 38947050d13960d57a4a9c166fcf51bca7d56970
+  SwiftLint: e5c7f1fba68eccfc51509d5b2ce1699f5502e0c7
 
-PODFILE CHECKSUM: 166b365d25c57660cc4c80763276f8ab0f1bf8e1
+PODFILE CHECKSUM: 8f0feeb83df81a60a60df0c6c82a27c59a622ab3
 
 COCOAPODS: 1.11.2
