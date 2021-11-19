@@ -64,7 +64,7 @@ class DetailViewController: BaseViewController {
 
 extension DetailViewController {
     private func initTitle() {
-        self.title = "Show detail"
+        self.title = NSLocalizedString("detail.title", comment: "Detail of the current show")
         self.navigationController?.navigationBar.prefersLargeTitles = false
     }
 

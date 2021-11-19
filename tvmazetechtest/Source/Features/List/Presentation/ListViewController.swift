@@ -141,7 +141,7 @@ extension ListViewController: UITableViewDelegate {
 
 extension ListViewController {
     private func initTitle() {
-        self.title = "TV Maze API"
+        self.title = NSLocalizedString("list.title", comment: "Title of the main list")
     }
 }
 
