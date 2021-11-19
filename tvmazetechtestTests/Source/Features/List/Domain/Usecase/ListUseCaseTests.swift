@@ -10,13 +10,12 @@ import XCTest
 import Nimble
 
 class ListUseCaseTests: XCTestCase {
-
     @Inject
-    private var useCase: ListUseCase
+    private var useCase: ListUseCase?
 
     func testGetFirstPageSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.useCase.fetch { (models: [Show]) in
+            self.useCase?.fetch { (models: [Show]) in
                 expect(models).toNot(beNil())
                 done()
             }
@@ -25,7 +24,7 @@ class ListUseCaseTests: XCTestCase {
 
     func testGetSecondPageSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.useCase.fetch(by: 1) { (models: [Show]) in
+            self.useCase?.fetch(by: 1) { (models: [Show]) in
                 expect(models).toNot(beNil())
                 done()
             }
@@ -34,7 +33,7 @@ class ListUseCaseTests: XCTestCase {
 
     func testGetPageOutOfRangeFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.useCase.fetch(by: 100000000) { (models: [Show]) in
+            self.useCase?.fetch(by: 100000000) { (models: [Show]) in
                 expect(models).to(beEmpty())
                 done()
             }
@@ -43,7 +42,7 @@ class ListUseCaseTests: XCTestCase {
 
     func testGetSearchSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.useCase.search(by: "Cars") { (models: [SearchResponse]) in
+            self.useCase?.search(by: "Cars") { (models: [Show]) in
                 expect(models).toNot(beNil())
                 done()
             }
@@ -52,7 +51,7 @@ class ListUseCaseTests: XCTestCase {
 
     func testGetSearchFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.useCase.search(by: "SHOW NOT FOUND") { (models: [SearchResponse]) in
+            self.useCase?.search(by: "SHOW NOT FOUND") { (models: [Show]) in
                 expect(models).to(beEmpty())
                 done()
             }

@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  tvmazetechtest
+
+  Created by David Martin on 19/11/21.
+  
+*/
+"list.title" = "Listado de shows";
+"detail.title" = "Detalle del show";

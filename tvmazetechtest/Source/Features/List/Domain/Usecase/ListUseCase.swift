@@ -9,26 +9,20 @@ import Foundation
 
 class ListUseCase: InjectableComponent {
     @Inject
-    private var repository: ListRepository
+    private var repository: ListRepository?
 
-    func fetch(by page: Int? = 0, completion:  @escaping ([Show]) -> Void) {
+    func fetch(by page: Int = 0, completion:  @escaping ([Show]) -> Void) {
         DispatchQueue.global(qos: .background).async {
-            self.repository.fetch(by: page) { response in
-                /* I've added a second delay, to let see the loading animation as well */
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                    completion(response)
-                }
+            self.repository?.fetch(by: page) { response in
+                completion(response)
             }
         }
     }
 
-    func search(by query: String? = nil, completion:  @escaping ([SearchResponse]) -> Void) {
+    func search(by query: String? = nil, completion:  @escaping ([Show]) -> Void) {
         DispatchQueue.global(qos: .background).async {
-            self.repository.search(by: query) { response in
-                /* I've added a second delay, to let see the loading animation as well */
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-                    completion(response)
-                }
+            self.repository?.search(by: query) { response in
+                completion(response)
             }
         }
     }

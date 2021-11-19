@@ -15,12 +15,12 @@ class Resolver {
     var factoryDict: [String: () -> InjectableComponent] = [:]
 
     func add(type: InjectableComponent.Type, _ factory: @escaping () -> InjectableComponent) {
-        factoryDict[String(describing: type.self)] = factory
+        self.factoryDict[String(describing: type.self)] = factory
     }
 
-    func resolve<InjectableComponent>(_ type: InjectableComponent.Type) -> InjectableComponent {
-        let component: InjectableComponent =
-            factoryDict[String(describing: InjectableComponent.self)]?() as! InjectableComponent
+    // swiftlint:disable force_cast
+    func resolve<InjectableComponent>(_ type: InjectableComponent.Type) -> InjectableComponent? {
+        guard let component: InjectableComponent = self.factoryDict[String(describing: InjectableComponent.self)]?() as? InjectableComponent else { return nil }
         return component
     }
 }

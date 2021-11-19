@@ -9,45 +9,66 @@ import Foundation
 
 class ListViewModel: InjectableComponent & BaseViewModel {
     @Inject
-    private var useCase: ListUseCase
+    private var useCase: ListUseCase?
 
     private (set) var isLoading: Bool = true
     private (set) var models = Observable<[Show]>([])
+    private (set) var detailId = Observable<Int>()
 
     private var currentPage: Int = 0
 
-    func onViewDidAppear() {
+    func fetch() {
         self.resetPage()
-        self.useCase.fetch() { [weak self] in
-            guard let self = self else { return }
-            self.deactiveLoading()
-            self.set(models: $0)
-        }
+        self.initialFetch()
     }
 
     func fetchNext() {
         self.activeLoading()
         self.increasePage()
-        self.useCase.fetch(by: self.currentPage) { [weak self] in
-            guard let self = self else { return }
-            self.deactiveLoading()
-            self.add(models: $0)
-        }
+        self.paginationFetch()
     }
 
     func search(by query: String? = nil) {
         self.resetPage()
-        self.useCase.search(by: query) { [weak self] in
-            guard let self = self else { return }
-            self.deactiveLoading()
-            self.set(models: $0.compactMap { $0.show })
-        }
+        self.searchFetch(by: query)
+    }
+
+    func didSelect(by id: Int) {
+        self.select(by: id)
     }
 }
 
 // MARK: - Private logic
 
 extension ListViewModel {
+    private func initialFetch() {
+        self.useCase?.fetch { [weak self] in
+            guard let self = self else { return }
+            self.deactiveLoading()
+            self.set(models: $0)
+        }
+    }
+
+    private func paginationFetch() {
+        self.useCase?.fetch(by: self.currentPage) { [weak self] in
+            guard let self = self else { return }
+            self.deactiveLoading()
+            self.add(models: $0)
+        }
+    }
+
+    private func searchFetch(by query: String?) {
+        self.useCase?.search(by: query) { [weak self] in
+            guard let self = self else { return }
+            self.deactiveLoading()
+            self.set(models: $0)
+        }
+    }
+
+    private func select(by id: Int) {
+        self.detailId.value = id
+    }
+
     private func activeLoading() {
         self.isLoading = true
     }

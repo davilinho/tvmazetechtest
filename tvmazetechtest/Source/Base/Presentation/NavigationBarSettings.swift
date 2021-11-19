@@ -9,17 +9,17 @@ import UIKit
 
 public struct NavigationBarSettings {
     public var prefersLargeTitles: Bool = true
-    public let backgroundBarColor: UIColor?
-    public let barTintColor: UIColor?
-    public let titleTextAttributes: [NSAttributedString.Key: Any]?
-    public var largeTitleTextAttributes: [NSAttributedString.Key: Any]?
+    public var backgroundBarColor: UIColor?
+    public var barTintColor: UIColor?
+    public var titleTextAttributes: [NSAttributedString.Key: Any] = [:]
+    public var largeTitleTextAttributes: [NSAttributedString.Key: Any] = [:]
 
     public init() {
         self.prefersLargeTitles = true
         self.backgroundBarColor = .black
         self.barTintColor = .white
 
-        let tintColor: UIColor = .lightGray
+        let tintColor: UIColor = .white
         let titleAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: tintColor,
             .font: UIFont.boldSystemFont(ofSize: 18.0)
@@ -36,23 +36,14 @@ public struct NavigationBarSettings {
 
 extension UINavigationBar {
     public func set(settings: NavigationBarSettings) {
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = settings.backgroundBarColor
-            appearance.titleTextAttributes = settings.titleTextAttributes ?? [:]
-            appearance.largeTitleTextAttributes = settings.largeTitleTextAttributes ?? [:]
-            self.tintColor = settings.barTintColor
-            self.standardAppearance = appearance
-            self.compactAppearance = appearance
-            self.scrollEdgeAppearance = appearance
-        } else {
-            self.isOpaque = true
-            self.isTranslucent = false
-            self.backgroundColor = settings.backgroundBarColor
-            self.barTintColor = settings.barTintColor
-            self.titleTextAttributes = settings.titleTextAttributes
-            self.largeTitleTextAttributes = settings.largeTitleTextAttributes
-        }
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = settings.backgroundBarColor
+        appearance.titleTextAttributes = settings.titleTextAttributes
+        appearance.largeTitleTextAttributes = settings.largeTitleTextAttributes
+        self.tintColor = settings.barTintColor
+        self.standardAppearance = appearance
+        self.compactAppearance = appearance
+        self.scrollEdgeAppearance = appearance
         self.prefersLargeTitles = settings.prefersLargeTitles
     }
 }
