@@ -17,7 +17,7 @@ class tvmazetechtestUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        XCTAssertTrue(app.staticTexts["TV Maze API"].exists)
+        XCTAssertTrue(app.staticTexts["Shows list"].exists)
 
         let cells = app.tables.firstMatch.cells.firstMatch
         XCTAssertTrue(cells.waitForExistence(timeout: 5))
