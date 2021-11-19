@@ -11,19 +11,19 @@ import Nimble
 
 class ListRepositoryTests: XCTestCase {
     @Inject
-    private var repository: ListRepository
+    private var repository: ListRepository?
 
     @Inject
-    private var store: StoreShowsDatasource
+    private var store: StoreShowsDatasource?
 
     override func setUp() {
         super.setUp()
-        self.store.clear()
+        self.store?.clear()
     }
 
     func testGetFirstPageSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.repository.fetch { (models: [Show]) in
+            self.repository?.fetch { (models: [Show]) in
                 expect(models).toNot(beNil())
                 done()
             }
@@ -32,8 +32,8 @@ class ListRepositoryTests: XCTestCase {
 
     func testGetFirstPageStoredSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.repository.fetch { _ in
-                expect(self.store.retrieve()?.models).toNot(beNil())
+            self.repository?.fetch { _ in
+                expect(self.store?.retrieve()?.models).toNot(beNil())
                 done()
             }
         }
@@ -41,7 +41,7 @@ class ListRepositoryTests: XCTestCase {
 
     func testGetSecondPageSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.repository.fetch(by: 1) { (models: [Show]) in
+            self.repository?.fetch(by: 1) { (models: [Show]) in
                 expect(models).toNot(beNil())
                 done()
             }
@@ -50,8 +50,8 @@ class ListRepositoryTests: XCTestCase {
 
     func testGetSecondPageStoredSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.repository.fetch(by: 1) { _ in
-                expect(self.store.retrieve()?.models).toNot(beNil())
+            self.repository?.fetch(by: 1) { _ in
+                expect(self.store?.retrieve()?.models).toNot(beNil())
                 done()
             }
         }
@@ -59,7 +59,7 @@ class ListRepositoryTests: XCTestCase {
 
     func testGetPageOutOfRangeFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.repository.fetch(by: 100000000) { (models: [Show]) in
+            self.repository?.fetch(by: 100000000) { (models: [Show]) in
                 expect(models).to(beEmpty())
                 done()
             }
@@ -68,8 +68,8 @@ class ListRepositoryTests: XCTestCase {
 
     func testGetPageOutOfRangeStoredFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.repository.fetch(by: 100000000) { _ in
-                expect(self.store.retrieve()?.models).to(beNil())
+            self.repository?.fetch(by: 100000000) { _ in
+                expect(self.store?.retrieve()?.models).to(beNil())
                 done()
             }
         }
@@ -77,7 +77,7 @@ class ListRepositoryTests: XCTestCase {
 
     func testGetSearchSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.repository.search(by: "Cars") { (models: [Show]) in
+            self.repository?.search(by: "Cars") { (models: [Show]) in
                 expect(models).toNot(beNil())
                 done()
             }
@@ -86,8 +86,8 @@ class ListRepositoryTests: XCTestCase {
 
     func testGetSearchStoredSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.repository.search(by: "Cars") { _ in
-                expect(self.store.retrieve()?.models).toNot(beNil())
+            self.repository?.search(by: "Cars") { _ in
+                expect(self.store?.retrieve()?.models).toNot(beNil())
                 done()
             }
         }
@@ -95,7 +95,7 @@ class ListRepositoryTests: XCTestCase {
 
     func testGetSearchFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.repository.search(by: "SHOW NOT FOUND") { (models: [Show]) in
+            self.repository?.search(by: "SHOW NOT FOUND") { (models: [Show]) in
                 expect(models).to(beEmpty())
                 done()
             }
@@ -104,8 +104,8 @@ class ListRepositoryTests: XCTestCase {
 
     func testGetSearchStoredFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.repository.search(by: "SHOW NOT FOUND") { _ in
-                expect(self.store.retrieve()?.models).to(beEmpty())
+            self.repository?.search(by: "SHOW NOT FOUND") { _ in
+                expect(self.store?.retrieve()?.models).to(beEmpty())
                 done()
             }
         }

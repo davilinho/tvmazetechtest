@@ -55,7 +55,7 @@ class ListViewControllerTests: XCTestCase {
         guard let sut = self.loadView() else { return }
         sut.viewDidAppear(true)
         sut.navigate(to: 1)
-        sut.viewModel.models.subscribe { _  in
+        sut.viewModel?.models.subscribe { _  in
             expect(self.spy.onDidSelectCalled).to(beTrue())
         }
     }
@@ -65,7 +65,7 @@ class ListViewControllerTests: XCTestCase {
         sut.viewDidAppear(true)
         sut.bindViewModels()
         sut.tableView(UITableView(), didSelectRowAt: IndexPath(row: 0, section: 0))
-        sut.viewModel.models.subscribe { _  in
+        sut.viewModel?.models.subscribe { _  in
             expect(self.spy.onDidSelectCalled).to(beTrue())
         }
     }

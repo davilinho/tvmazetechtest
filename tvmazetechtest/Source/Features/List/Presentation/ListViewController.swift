@@ -37,10 +37,10 @@ class ListViewController: BaseViewController {
     }
 
     @Inject
-    var viewModel: ListViewModel
+    var viewModel: ListViewModel?
 
     @Inject
-    private var wireframe: ListWireframe
+    private var wireframe: ListWireframe?
 
     private let search = UISearchController(searchResultsController: nil)
 
@@ -63,7 +63,7 @@ class ListViewController: BaseViewController {
 
     override func bindViewModels() {
         super.bindViewModels()
-        self.viewModel.models.subscribe { [weak self] response in
+        self.viewModel?.models.subscribe { [weak self] response in
             guard let self = self, let models = response else { return }
 
             self.refreshTableView()
@@ -78,7 +78,7 @@ class ListViewController: BaseViewController {
                 self.showNotFoundResultsLabel(for: self.search.searchBar.text)
             }
         }
-        self.viewModel.detailId.subscribe { [weak self] response in
+        self.viewModel?.detailId.subscribe { [weak self] response in
             guard let self = self, let id = response else { return }
             self.navigate(to: id)
         }
@@ -86,25 +86,25 @@ class ListViewController: BaseViewController {
 
     override func unBindViewModels() {
         super.unBindViewModels()
-        self.viewModel.models.unsubscribe()
-        self.viewModel.detailId.unsubscribe()
+        self.viewModel?.models.unsubscribe()
+        self.viewModel?.detailId.unsubscribe()
     }
 
     @objc private func fetch() {
         guard !self.isSearched() else { return }
         self.playAnimation()
-        self.viewModel.fetch()
+        self.viewModel?.fetch()
     }
 }
 
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.models.value?.count ?? 0
+        return self.viewModel?.models.value?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell: ShowsCell = tableView.dequeueReusableCell(withIdentifier: ShowsCell.identifier, for: indexPath) as? ShowsCell,
-              let show = self.viewModel.models.value?[safe: indexPath.row] else { return UITableViewCell() }
+              let show = self.viewModel?.models.value?[safe: indexPath.row] else { return UITableViewCell() }
         cell(self.view.frame.height, show)
         return cell
     }
@@ -132,8 +132,8 @@ extension ListViewController: UITableViewDataSource {
 
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let model = self.viewModel.models.value?[safe: indexPath.row] else { return }
-        self.viewModel.didSelect(by: model.id)
+        guard let model = self.viewModel?.models.value?[safe: indexPath.row] else { return }
+        self.viewModel?.didSelect(by: model.id)
     }
 }
 
@@ -222,7 +222,7 @@ extension ListViewController: UISearchBarDelegate {
 
     private func search(by text: String) {
         self.playAnimation()
-        self.viewModel.search(by: text)
+        self.viewModel?.search(by: text)
     }
 
     private func isSearched() -> Bool {
@@ -246,9 +246,8 @@ extension ListViewController {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
 
-        guard (offsetY > contentHeight - scrollView.frame.height * 4),
-              !self.viewModel.isLoading, !self.isSearched() else { return }
-        self.viewModel.fetchNext()
+        guard (offsetY > contentHeight - scrollView.frame.height * 4), !(self.viewModel?.isLoading ?? false), !self.isSearched() else { return }
+        self.viewModel?.fetchNext()
     }
 }
 
@@ -256,6 +255,6 @@ extension ListViewController {
 
 extension ListViewController {
     func navigate(to id: Int) {
-        self.wireframe.navigate(to: .detail(by: id), with: self.navigationController)
+        self.wireframe?.navigate(to: .detail(by: id), with: self.navigationController)
     }
 }

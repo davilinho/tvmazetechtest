@@ -15,6 +15,6 @@ class ResolverTests: XCTestCase {
         Resolver.shared.add(type: ResolverObjectMockTest.self, { return ResolverObjectMockTest(value: "TEST") })
         let object = Resolver.shared.resolve(ResolverObjectMockTest.self)
         expect(object).toNot(beNil())
-        expect(object.value).to(equal("TEST"))
+        expect(object?.value).to(equal("TEST"))
     }
 }

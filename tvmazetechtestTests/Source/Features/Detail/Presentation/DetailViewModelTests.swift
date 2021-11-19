@@ -12,25 +12,25 @@ import Nimble
 class DetailViewModelTests: XCTestCase {
 
     @Inject
-    private var viewModel: DetailViewModel
+    private var viewModel: DetailViewModel?
 
     func testGetDetailSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.viewModel.model.subscribe { model in
+            self.viewModel?.model.subscribe { model in
                 expect(model).toNot(beNil())
                 done()
             }
-            self.viewModel.fetch(by: 1)
+            self.viewModel?.fetch(by: 1)
         }
     }
 
     func testGetDetailFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.viewModel.model.subscribe { model in
+            self.viewModel?.model.subscribe { model in
                 expect(model).to(beNil())
                 done()
             }
-            self.viewModel.fetch(by: 100000000)
+            self.viewModel?.fetch(by: 100000000)
         }
     }
 }

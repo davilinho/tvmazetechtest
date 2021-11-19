@@ -27,7 +27,7 @@ class DetailViewController: BaseViewController {
     @IBOutlet private var summaryLabel: UILabel!
 
     @Inject
-    var viewModel: DetailViewModel
+    var viewModel: DetailViewModel?
 
     var id: Int?
 
@@ -43,7 +43,7 @@ class DetailViewController: BaseViewController {
 
     override func bindViewModels() {
         super.bindViewModels()
-        self.viewModel.model.subscribe { [weak self] response in
+        self.viewModel?.model.subscribe { [weak self] response in
             guard let self = self, let model = response else { return }
             self.fill(model: model)
         }
@@ -51,12 +51,12 @@ class DetailViewController: BaseViewController {
 
     override func unBindViewModels() {
         super.unBindViewModels()
-        self.viewModel.model.unsubscribe()
+        self.viewModel?.model.unsubscribe()
     }
 
     private func fetch() {
         guard let id = self.id else { return }
-        self.viewModel.fetch(by: id)
+        self.viewModel?.fetch(by: id)
     }
 }
 

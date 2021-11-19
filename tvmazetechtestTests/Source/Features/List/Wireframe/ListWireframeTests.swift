@@ -11,10 +11,10 @@ import Nimble
 
 class ListWireframeTests: XCTestCase {
     @Inject
-    private var wireframe: ListWireframe
+    private var wireframe: ListWireframe?
 
     func testWireframeSuccessful() {
-        self.wireframe.navigate(to: .detail(by: 1), with: UINavigationController())
+        self.wireframe?.navigate(to: .detail(by: 1), with: UINavigationController())
         expect(self.wireframe).toNot(beNil())
     }
 }

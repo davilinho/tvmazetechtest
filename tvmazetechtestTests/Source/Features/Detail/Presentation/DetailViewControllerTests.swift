@@ -25,7 +25,7 @@ class DetailViewControllerTests: XCTestCase {
         sut.id = 1
         sut.viewDidLoad()
         sut.bindViewModels()
-        sut.viewModel.model.subscribe { response in
+        sut.viewModel?.model.subscribe { response in
             expect(response).toNot(beNil())
         }
     }
@@ -45,19 +45,19 @@ class DetailViewControllerTests: XCTestCase {
     func testFillDataWithRatingSuccessful() {
         guard let sut = self.loadViewWithoutMock() else { return }
         sut.bindViewModels()
-        sut.viewModel.model.value = Show(id: 1, name: "TEST",
+        sut.viewModel?.model.value = Show(id: 1, name: "TEST",
                                          image: Image(medium: "https://static.tvmaze.com/images/api/tvm_api.png", original: "https://static.tvmaze.com/images/api/tvm_api.png"),
                                          rating: Rating(average: 10), summary: "TEST")
-        expect(sut.viewModel.model.value).notTo(beNil())
+        expect(sut.viewModel?.model.value).notTo(beNil())
     }
 
     func testFillDataWithoutRatingSuccessful() {
         guard let sut = self.loadViewWithoutMock() else { return }
         sut.bindViewModels()
-        sut.viewModel.model.value = Show(id: 1, name: "TEST",
+        sut.viewModel?.model.value = Show(id: 1, name: "TEST",
                                          image: Image(medium: "https://static.tvmaze.com/images/api/tvm_api.png", original: "https://static.tvmaze.com/images/api/tvm_api.png"),
                                          rating: nil, summary: "TEST")
-        expect(sut.viewModel.model.value).notTo(beNil())
+        expect(sut.viewModel?.model.value).notTo(beNil())
     }
 }
 

@@ -19,7 +19,7 @@ public struct NavigationBarSettings {
         self.backgroundBarColor = .black
         self.barTintColor = .white
 
-        let tintColor: UIColor = .lightGray
+        let tintColor: UIColor = .white
         let titleAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: tintColor,
             .font: UIFont.boldSystemFont(ofSize: 18.0)
