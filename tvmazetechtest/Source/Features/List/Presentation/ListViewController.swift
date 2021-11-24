@@ -69,7 +69,6 @@ class ListViewController: BaseViewController {
             self.refreshTableView()
             self.stopAnimation()
             self.setSearchControllerIntoNavigation()
-            self.hideKeyboard()
 
             let hasResults = !models.isEmpty
             if hasResults {
@@ -232,10 +231,6 @@ extension ListViewController: UISearchBarDelegate {
 
     private func clearSearchBar() {
         self.search.searchBar.text?.removeAll()
-    }
-
-    private func hideKeyboard() {
-        self.search.searchBar.endEditing(true)
     }
 }
 
