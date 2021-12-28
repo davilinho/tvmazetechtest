@@ -1,4 +1,4 @@
-platform :ios, '13.0'
+platform :ios, '15.2'
 
 source 'https://github.com/CocoaPods/Specs.git'
 
@@ -30,7 +30,7 @@ post_install do |installer|
     target.build_configurations.each do |config|
       config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
       config.build_settings['SWIFT_VERSION'] = '5.0'
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.2'
       config.build_settings['VALID_ARCHS'] = 'arm64 arm64e armv7 armv7s x86_64'
       config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = 'NO'
     end

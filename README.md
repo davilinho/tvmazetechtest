@@ -1,8 +1,8 @@
 # TV Maze Test API
 
-[![OS Version: iOS 13.0](https://img.shields.io/badge/iOS-13.0-green.svg)](https://www.apple.com/es/ios/ios-13/)
+[![OS Version: iOS 15.2](https://img.shields.io/badge/iOS-15.2-red.svg)](https://www.apple.com/es/ios/ios-15/)
 [![Build Status](https://app.bitrise.io/app/5450f7e0cea55034/status.svg?token=sQv4V01buaiKr2JLluNpmg&branch=master)](https://app.bitrise.io/app/5450f7e0cea55034)
-[![codecov](https://codecov.io/gh/davilinho/tvmazetechtest/branch/master/graph/badge.svg?token=DENCY7C34X)](https://codecov.io/gh/davilinho/tvmazetechtest)
+<!-- [![codecov](https://codecov.io/gh/davilinho/tvmazetechtest/branch/master/graph/badge.svg?token=DENCY7C34X)](https://codecov.io/gh/davilinho/tvmazetechtest) -->
 
 In this document, the main details of the development, carried out under the Swift language, are exposed.
 
