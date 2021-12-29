@@ -66,20 +66,25 @@ class ListViewController: BaseViewController {
         self.viewModel?.models.subscribe { [weak self] response in
             guard let self = self, let models = response else { return }
 
-            self.refreshTableView()
-            self.stopAnimation()
-            self.setSearchControllerIntoNavigation()
+            Task { @MainActor in
+                self.refreshTableView()
+                self.stopAnimation()
+                self.setSearchControllerIntoNavigation()
 
-            let hasResults = !models.isEmpty
-            if hasResults {
-                self.hideNotFoundResultsLabel()
-            } else {
-                self.showNotFoundResultsLabel(for: self.search.searchBar.text)
+                let hasResults = !models.isEmpty
+                if hasResults {
+                    self.hideNotFoundResultsLabel()
+                } else {
+                    self.showNotFoundResultsLabel(for: self.search.searchBar.text)
+                }
             }
         }
         self.viewModel?.detailId.subscribe { [weak self] response in
             guard let self = self, let id = response else { return }
-            self.navigate(to: id)
+
+            Task { @MainActor in
+                self.navigate(to: id)
+            }
         }
     }
 

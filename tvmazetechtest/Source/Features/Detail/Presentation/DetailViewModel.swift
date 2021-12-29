@@ -14,9 +14,8 @@ class DetailViewModel: InjectableComponent & BaseViewModel {
     private (set) var model = Observable<Show>()
 
     func fetch(by id: Int) {
-        self.useCase?.fetch(by: id) { [weak self] model in
-            guard let self = self else { return }
-            self.model.value = model
+        Task {
+            self.model.value = await self.useCase?.fetch(by: id)
         }
     }
 }

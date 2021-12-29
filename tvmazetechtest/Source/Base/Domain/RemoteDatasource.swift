@@ -19,27 +19,31 @@ class RemoteDatasource: InjectableComponent {
 }
 
 extension RemoteDatasource {
-    func get<Response: Codable>(to endpoint: String, with params: Codable?, completion: @escaping (Result<Response, BaseError>) -> Void) {
+    func get<Response: Codable>(to endpoint: String, with params: Codable?) async throws -> Response {
         let url: String = [self.baseUrl, endpoint].compactMap { $0 }.joined(separator: "/")
         let request = params?.dictionary
 
         CoreLog.remote.debug("Request: %@", url.description)
 
-        self.sessionManager
-            .request(url, method: .get,
-                     parameters: request,
-                     encoding: URLEncoding.default,
-                     headers: ["Accept": "application/json",
-                               "Content-Type": "application/json"])
-            .validate(contentType: ["application/json"])
-            .validate(statusCode: 200 ..< 300)
-            .responseDecodable(of: Response.self) { response in
-                switch response.result {
-                case let .success(data):
-                    completion(.success(data))
-                case let .failure(error):
-                    completion(.failure(.remoteError(.reason(error.localizedDescription))))
+        return try await withUnsafeThrowingContinuation { (continuation: UnsafeContinuation<Response, Error>) in
+            self.sessionManager
+                .request(url, method: .get,
+                         parameters: request,
+                         encoding: URLEncoding.default,
+                         headers: ["Accept": "application/json",
+                                   "Content-Type": "application/json"])
+                .validate(contentType: ["application/json"])
+                .validate(statusCode: 200 ..< 300)
+                .responseDecodable(of: Response.self) { response in
+                    switch response.result {
+                    case let .success(data):
+                        continuation.resume(returning: data)
+                        return
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
+                        return
+                    }
                 }
-            }
+        }
     }
 }

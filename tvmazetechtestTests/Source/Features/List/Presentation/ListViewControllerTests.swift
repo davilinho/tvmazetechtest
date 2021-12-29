@@ -53,21 +53,21 @@ class ListViewControllerTests: XCTestCase {
 
     func testViewControllerNavigateToDetail() {
         guard let sut = self.loadView() else { return }
-        sut.viewDidAppear(true)
-        sut.navigate(to: 1)
         sut.viewModel?.models.subscribe { _  in
             expect(self.spy.onDidSelectCalled).to(beTrue())
         }
+        sut.viewDidAppear(true)
+        sut.navigate(to: 1)
     }
 
     func testViewControllerDidSelect() {
         guard let sut = self.loadViewWithoutMock() else { return }
-        sut.viewDidAppear(true)
-        sut.bindViewModels()
-        sut.tableView(UITableView(), didSelectRowAt: IndexPath(row: 0, section: 0))
         sut.viewModel?.models.subscribe { _  in
             expect(self.spy.onDidSelectCalled).to(beTrue())
         }
+        sut.viewDidAppear(true)
+        sut.bindViewModels()
+        sut.tableView(UITableView(), didSelectRowAt: IndexPath(row: 0, section: 0))
     }
 }
 

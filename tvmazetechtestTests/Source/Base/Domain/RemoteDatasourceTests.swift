@@ -16,13 +16,10 @@ class RemoteDatasourceTests: XCTestCase {
 
     func testGetFirstPageSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.remote?.get(to: "shows", with: PageRequest(page: 1)) { (result: Result<[Show], BaseError>) in
-                switch result {
-                case .success(let response):
+            Task {
+                if let response: [Show] = try await self.remote?.get(to: "shows", with: PageRequest(page: 1)) {
                     expect(response).toNot(beNil())
                     done()
-                case .failure(let error):
-                    CoreLog.remote.error("%@", error.description)
                 }
             }
         }
@@ -30,11 +27,12 @@ class RemoteDatasourceTests: XCTestCase {
 
     func testGetFirstPageFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.remote?.get(to: "shows", with: PageRequest(page: 1)) { (result: Result<[String], BaseError>) in
-                switch result {
-                case .success(let response):
-                    CoreLog.remote.debug("%@", response.testDescription)
-                case .failure(let error):
+            Task {
+                do {
+                    if let response: [String] = try await self.remote?.get(to: "shows", with: PageRequest(page: 1)) {
+                        CoreLog.remote.debug("%@", response.testDescription)
+                    }
+                } catch {
                     expect(error).toNot(beNil())
                     done()
                 }
@@ -44,11 +42,12 @@ class RemoteDatasourceTests: XCTestCase {
 
     func testGetPageOutOfRangeFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.remote?.get(to: "shows", with: PageRequest(page: 100000000)) { (result: Result<[Show], BaseError>) in
-                switch result {
-                case .success(let response):
-                    CoreLog.remote.debug("%@", response.testDescription)
-                case .failure(let error):
+            Task {
+                do {
+                    if let response: [Show] = try await self.remote?.get(to: "shows", with: PageRequest(page: 100000000)) {
+                        CoreLog.remote.debug("%@", response.testDescription)
+                    }
+                } catch {
                     expect(error).toNot(beNil())
                     done()
                 }

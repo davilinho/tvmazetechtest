@@ -14,37 +14,31 @@ class ListRepository: InjectableComponent {
     @Inject
     private var store: StoreShowsDatasource?
 
-    func fetch(by page: Int = 0, completion: @escaping ([Show]) -> Void) {
+    func fetch(by page: Int = 0) async -> [Show] {
         let isFirstPage = self.isFirst(page: page)
-        self.remote?.get(to: "shows", with: PageRequest(page: page)) { (result: Result<[Show], BaseError>) in
-            switch result {
-            case .success(let response):
-                let model = StoredShows(models: response)
-                self.store?.save(model, needRestore: isFirstPage)
-                completion(response)
-
-            case .failure(let error):
-                CoreLog.business.error("%@", error.description)
-                guard isFirstPage else { completion([]); return }
-                let storedModels: [Show] = self.store?.retrieve()?.models ?? []
-                completion(storedModels)
-            }
+        do {
+            guard let response: [Show] = try await self.remote?.get(to: "shows", with: PageRequest(page: page)) else { return [] }
+            let model = StoredShows(models: response)
+            self.store?.save(model, needRestore: isFirstPage)
+            return response
+        } catch {
+            CoreLog.business.error("%@", error.localizedDescription)
+            guard isFirstPage else { return [] }
+            let storedModels: [Show] = self.store?.retrieve()?.models ?? []
+            return storedModels
         }
     }
 
-    func search(by query: String? = nil, completion: @escaping ([Show]) -> Void) {
-        self.remote?.get(to: "search/shows", with: SearchRequest(query: query)) { (result: Result<[SearchResponse], BaseError>) in
-            switch result {
-            case .success(let response):
-                let shows: [Show] = self.getShowsSortedByName(response)
-                let model = StoredShows(models: shows)
-                self.store?.save(model)
-                completion(shows)
-
-            case .failure(let error):
-                CoreLog.business.error("%@", error.description)
-                completion([])
-            }
+    func search(by query: String? = nil) async -> [Show] {
+        do {
+            guard let response: [SearchResponse] = try await self.remote?.get(to: "search/shows", with: SearchRequest(query: query)) else { return [] }
+            let shows: [Show] = self.getShowsSortedByName(response)
+            let model = StoredShows(models: shows)
+            self.store?.save(model)
+            return shows
+        } catch {
+            CoreLog.business.error("%@", error.localizedDescription)
+            return []
         }
     }
 }
