@@ -16,8 +16,8 @@ target 'tvmazetechtest' do
   target 'tvmazetechtestTests' do
     inherit! :search_paths
 
-    pod 'Nimble', '9.2.1'
-    pod 'SnapshotTesting', '~> 1.8.1'
+    pod 'Nimble'
+    pod 'SnapshotTesting'
   end
 
   target 'tvmazetechtestUITests' do
