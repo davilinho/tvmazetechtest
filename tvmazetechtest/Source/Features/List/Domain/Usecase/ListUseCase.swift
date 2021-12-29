@@ -11,19 +11,13 @@ class ListUseCase: InjectableComponent {
     @Inject
     private var repository: ListRepository?
 
-    func fetch(by page: Int = 0, completion:  @escaping ([Show]) -> Void) {
-        DispatchQueue.global(qos: .background).async {
-            self.repository?.fetch(by: page) { response in
-                completion(response)
-            }
-        }
+    func fetch(by page: Int = 0) async -> [Show] {
+        guard let response = await self.repository?.fetch(by: page) else { return [] }
+        return response
     }
 
-    func search(by query: String? = nil, completion:  @escaping ([Show]) -> Void) {
-        DispatchQueue.global(qos: .background).async {
-            self.repository?.search(by: query) { response in
-                completion(response)
-            }
-        }
+    func search(by query: String? = nil) async -> [Show] {
+        guard let response = await self.repository?.search(by: query) else { return [] }
+        return response
     }
 }

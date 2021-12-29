@@ -26,12 +26,15 @@ class DetailRepositoryTests: XCTestCase {
 
     func testGetDetailFromStoreSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.listRepository?.fetch { (models: [Show]) in
-                if !models.isEmpty {
-                    self.detailRepository?.fetch(by: 1) { (model: Show?) in
-                        expect(model).toNot(beNil())
-                        expect(model?.id).to(equal(1))
-                        done()
+            Task {
+                if let models: [Show] = await self.listRepository?.fetch() {
+                    if !models.isEmpty {
+                        Task {
+                            let model: Show? = await self.detailRepository?.fetch(by: 1)
+                            expect(model).toNot(beNil())
+                            expect(model?.id).to(equal(1))
+                            done()
+                        }
                     }
                 }
             }
@@ -40,7 +43,8 @@ class DetailRepositoryTests: XCTestCase {
 
     func testGetDetailFromRemoteSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.detailRepository?.fetch(by: 1) { (model: Show?) in
+            Task {
+                let model: Show? = await self.detailRepository?.fetch(by: 1)
                 expect(model).toNot(beNil())
                 expect(model?.id).to(equal(1))
                 done()

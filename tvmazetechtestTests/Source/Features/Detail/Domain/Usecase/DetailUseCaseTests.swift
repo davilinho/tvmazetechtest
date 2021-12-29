@@ -26,12 +26,11 @@ class DetailUseCaseTests: XCTestCase {
 
     func testGetDetailFromStoreSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.listUseCase?.fetch { (models: [Show]) in
-                if !models.isEmpty {
-                    self.detailUseCase?.fetch(by: 1) { (model: Show?) in
-                        expect(model).toNot(beNil())
-                        done()
-                    }
+            Task {
+                if let models: [Show] = await self.listUseCase?.fetch(), !models.isEmpty {
+                    let model: Show? = await self.detailUseCase?.fetch(by: 1)
+                    expect(model).toNot(beNil())
+                    done()
                 }
             }
         }
@@ -39,7 +38,8 @@ class DetailUseCaseTests: XCTestCase {
 
     func testGetDetailFromRemoteSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.detailUseCase?.fetch(by: 1) { (model: Show?) in
+            Task {
+                let model: Show? = await self.detailUseCase?.fetch(by: 1)
                 expect(model).toNot(beNil())
                 expect(model?.id).to(equal(1))
                 done()

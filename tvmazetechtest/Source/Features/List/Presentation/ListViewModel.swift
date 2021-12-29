@@ -42,26 +42,26 @@ class ListViewModel: InjectableComponent & BaseViewModel {
 
 extension ListViewModel {
     private func initialFetch() {
-        self.useCase?.fetch { [weak self] in
-            guard let self = self else { return }
+        Task {
+            guard let response = await self.useCase?.fetch() else { return }
             self.deactiveLoading()
-            self.set(models: $0)
+            self.set(models: response)
         }
     }
 
     private func paginationFetch() {
-        self.useCase?.fetch(by: self.currentPage) { [weak self] in
-            guard let self = self else { return }
+        Task {
+            guard let response = await self.useCase?.fetch(by: self.currentPage) else { return }
             self.deactiveLoading()
-            self.add(models: $0)
+            self.add(models: response)
         }
     }
 
     private func searchFetch(by query: String?) {
-        self.useCase?.search(by: query) { [weak self] in
-            guard let self = self else { return }
+        Task {
+            guard let response = await self.useCase?.search(by: query) else { return }
             self.deactiveLoading()
-            self.set(models: $0)
+            self.set(models: response)
         }
     }
 

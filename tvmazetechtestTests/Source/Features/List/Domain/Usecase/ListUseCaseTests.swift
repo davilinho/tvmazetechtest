@@ -15,7 +15,8 @@ class ListUseCaseTests: XCTestCase {
 
     func testGetFirstPageSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.useCase?.fetch { (models: [Show]) in
+            Task {
+                let models: [Show]? = await self.useCase?.fetch()
                 expect(models).toNot(beNil())
                 done()
             }
@@ -24,7 +25,8 @@ class ListUseCaseTests: XCTestCase {
 
     func testGetSecondPageSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.useCase?.fetch(by: 1) { (models: [Show]) in
+            Task {
+                let models: [Show]? = await self.useCase?.fetch(by: 1)
                 expect(models).toNot(beNil())
                 done()
             }
@@ -33,7 +35,8 @@ class ListUseCaseTests: XCTestCase {
 
     func testGetPageOutOfRangeFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.useCase?.fetch(by: 100000000) { (models: [Show]) in
+            Task {
+                let models: [Show]? = await self.useCase?.fetch(by: 100000000)
                 expect(models).to(beEmpty())
                 done()
             }
@@ -42,7 +45,8 @@ class ListUseCaseTests: XCTestCase {
 
     func testGetSearchSuccessful() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.useCase?.search(by: "Cars") { (models: [Show]) in
+            Task {
+                let models: [Show]? = await self.useCase?.search(by: "Cars")
                 expect(models).toNot(beNil())
                 done()
             }
@@ -51,7 +55,8 @@ class ListUseCaseTests: XCTestCase {
 
     func testGetSearchFailure() {
         waitUntil(timeout: DispatchTimeInterval.seconds(5)) { done in
-            self.useCase?.search(by: "SHOW NOT FOUND") { (models: [Show]) in
+            Task {
+                let models: [Show]? = await self.useCase?.search(by: "SHOW NOT FOUND")
                 expect(models).to(beEmpty())
                 done()
             }

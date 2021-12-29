@@ -124,7 +124,7 @@ PODS:
   - SDWebImage (5.12.1):
     - SDWebImage/Core (= 5.12.1)
   - SDWebImage/Core (5.12.1)
-  - SnapshotTesting (1.8.2)
+  - SnapshotTesting (1.9.0)
   - SwiftLint (0.45.0)
 
 DEPENDENCIES:
@@ -133,9 +133,9 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - Firebase/Performance
   - lottie-ios (= 3.2.3)
-  - Nimble (= 9.2.1)
+  - Nimble
   - SDWebImage (= 5.12.1)
-  - SnapshotTesting (~> 1.8.1)
+  - SnapshotTesting
   - SwiftLint (= 0.45.0)
 
 SPEC REPOS:
@@ -180,9 +180,9 @@ SPEC CHECKSUMS:
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
-  SnapshotTesting: 38947050d13960d57a4a9c166fcf51bca7d56970
+  SnapshotTesting: 6141c48b6aa76ead61431ca665c14ab9a066c53b
   SwiftLint: e5c7f1fba68eccfc51509d5b2ce1699f5502e0c7
 
-PODFILE CHECKSUM: 8f159333cabd78c15a4cd3fed178015c571530c5
+PODFILE CHECKSUM: e035d2150c450689143c8a9c853922ed92121845
 
 COCOAPODS: 1.11.2

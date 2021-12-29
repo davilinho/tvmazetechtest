@@ -45,7 +45,10 @@ class DetailViewController: BaseViewController {
         super.bindViewModels()
         self.viewModel?.model.subscribe { [weak self] response in
             guard let self = self, let model = response else { return }
-            self.fill(model: model)
+
+            Task { @MainActor in
+                self.fill(model: model)
+            }
         }
     }
 

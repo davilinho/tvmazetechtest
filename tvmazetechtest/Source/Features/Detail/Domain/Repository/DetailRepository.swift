@@ -14,12 +14,11 @@ class DetailRepository: InjectableComponent {
     @Inject
     private var store: StoreShowsDatasource?
 
-    func fetch(by id: Int, completion: @escaping (Show?) -> Void) {
+    func fetch(by id: Int) async -> Show? {
         guard let storedModel = self.retrieveFromStorage(by: id) else {
-            self.fetchFromRemote(by: id, completion: completion)
-            return
+            return await self.fetchFromRemote(by: id)
         }
-        completion(storedModel)
+        return storedModel
     }
 }
 
@@ -31,21 +30,17 @@ extension DetailRepository {
         return model
     }
 
-    private func fetchFromRemote(by id: Int, completion: @escaping (Show?) -> Void) {
+    private func fetchFromRemote(by id: Int) async -> Show? {
         let url = ["shows", id.description].joined(separator: "/")
-        self.remote?.get(to: url, with: nil) { (result: Result<Show, BaseError>) in
-            switch result {
-            case .success(let response):
-                let model = StoredShows(models: [response])
-                self.store?.save(model)
-                completion(response)
-
-            case .failure(let error):
-                CoreLog.business.error("%@", error.description)
-
-                let storedModel = self.store?.retrieve()?.models.filter { $0.id == id }.first
-                completion(storedModel)
-            }
+        do {
+            guard let response: Show = try await self.remote?.get(to: url, with: nil) else { return nil }
+            let model = StoredShows(models: [response])
+            self.store?.save(model)
+            return response
+        } catch {
+            CoreLog.business.error("%@", error.localizedDescription)
+            let storedModel = self.store?.retrieve()?.models.filter { $0.id == id }.first
+            return storedModel
         }
     }
 }
